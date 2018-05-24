@@ -1,0 +1,55 @@
+<?php
+
+namespace Sportic\Timing\CommonClient\Content;
+
+use ArrayAccess;
+use Sportic\Timing\CommonClient\Content\Traits\AccessMethodsTrait;
+use Sportic\Timing\CommonClient\Content\Traits\ArrayAccessTrait;
+use Sportic\Timing\CommonClient\Helper;
+
+/**
+ * Class AbstractContent
+ * @package Sportic\Timing\CommonClient\Content
+ */
+abstract class AbstractContent implements ArrayAccess
+{
+    use ArrayAccessTrait, AccessMethodsTrait;
+    protected $data = [];
+
+    /**
+     * AbstractContent constructor.
+     *
+     * @param $parameters
+     */
+    public function __construct($parameters = [])
+    {
+        $this->setParameters($parameters);
+    }
+
+    /**
+     * @param array $parameters
+     */
+    public function setParameters($parameters)
+    {
+        if (is_array($parameters)) {
+            foreach ($parameters as $name => $value) {
+                $method = 'set' . ucfirst(Helper::camelCase($name));
+                if (method_exists($this, $method)) {
+                    $this->$method($value);
+                } elseif (property_exists($this, $name)) {
+                    $this->{$name} = $value;
+                } else {
+                    $this->data[$name] = $value;
+                }
+            }
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __toArray()
+    {
+        return Helper::objectToArray($this->data);
+    }
+}

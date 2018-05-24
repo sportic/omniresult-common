@@ -1,0 +1,38 @@
+{
+  "name": "sportic/timing-common-client",
+  "description": "a common client scraper for getting data from timing websites",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Sportic\\Timing\\CommonClient\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sportic\\Timing\\CommonClient\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "bytic/goutte-phantomjs-bridge": "^1.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.0",
+    "phpunit/phpunit": "^6.2",
+    "mockery/mockery": "^1.0"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
+    ],
+    "post-update-cmd": [
+      "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
+    ]
+  }
+}
