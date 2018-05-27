@@ -37,7 +37,13 @@ class Helper
     public static function objectToArray($obj)
     {
         if (is_object($obj)) {
-            $obj = (array) $obj;
+            if (method_exists($obj, 'toArray')) {
+                $obj = $obj->toArray();
+            } elseif (method_exists($obj, '__toArray')) {
+                $obj = $obj->__toArray();
+            } else {
+                $obj = (array)$obj;
+            }
         }
         if (is_array($obj)) {
             $new = [];
