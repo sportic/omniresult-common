@@ -1,13 +1,14 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Utility;
+namespace Sportic\Omniresult\Common\Utility;
 
-use Sportic\Timing\CommonClient\Helper;
+use Sportic\Omniresult\Common\Exception\InvalidRequestException;
+use Sportic\Omniresult\Common\Helper;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
  * Trait ParametersTrait
- * @package Sportic\Timing\CommonClient\Utility
+ * @package Sportic\Omniresult\Common\Utility
  */
 trait ParametersTrait
 {
@@ -67,10 +68,31 @@ trait ParametersTrait
                     $this->$method($value);
                 } elseif (property_exists($this, $name)) {
                     $this->{$name} = $value;
+                } else {
+                    $this->parameters[$name] = $value;
                 }
             }
         }
 
         return $this;
+    }
+
+    /**
+     * Validate the request.
+     *
+     * This method is called internally by gateways to avoid wasting time with an API call
+     * when the request is clearly invalid.
+     *
+     * @param string ... a variable length list of required parameters
+     * @throws InvalidRequestException
+     */
+    public function validate(...$args)
+    {
+        foreach ($args as $key) {
+            $value = $this->parameters->get($key);
+            if (! isset($value)) {
+                throw new InvalidRequestException("The $key parameter is required");
+            }
+        }
     }
 }

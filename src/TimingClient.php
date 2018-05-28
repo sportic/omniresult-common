@@ -1,13 +1,13 @@
 <?php
 
-namespace Sportic\Timing\CommonClient;
+namespace Sportic\Omniresult\Common;
 
-use Sportic\Timing\CommonClient\Parsers\AbstractParser;
-use Sportic\Timing\CommonClient\Scrapers\AbstractScraper;
+use Sportic\Omniresult\Common\Parsers\AbstractParser;
+use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
 
 /**
  * Class TimingClient
- * @package Sportic\Timing\CommonClient
+ * @package Sportic\Omniresult\Common
  */
 class TimingClient implements TimingClientInterface
 {

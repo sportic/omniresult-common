@@ -1,8 +1,9 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Models;
+namespace Sportic\Omniresult\Common\Models;
 
-use Sportic\Timing\CommonClient\Helper;
+use Sportic\Omniresult\Common\Helper;
+use Sportic\Omniresult\Common\Utility\ParametersTrait;
 
 /**
  * Class AbstractModel
@@ -10,10 +11,7 @@ use Sportic\Timing\CommonClient\Helper;
  */
 abstract class AbstractModel
 {
-    /**
-     * @var string
-     */
-    protected $parameters;
+    use ParametersTrait;
 
     /**
      * AbstractModel constructor.

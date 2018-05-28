@@ -1,6 +1,6 @@
 <?php
 
-namespace Sportic\Timing\CommonClient;
+namespace Sportic\Omniresult\Common;
 
 /**
  * Class Helper

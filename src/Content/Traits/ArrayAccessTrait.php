@@ -1,6 +1,6 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Content\Traits;
+namespace Sportic\Omniresult\Common\Content\Traits;
 
 /**
  * Class ArrayAccessTrait

@@ -1,10 +1,10 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Content;
+namespace Sportic\Omniresult\Common\Content;
 
 /**
  * Class ContentFactory
- * @package Sportic\Timing\CommonClient\Content
+ * @package Sportic\Omniresult\Common\Content
  */
 class ContentFactory
 {

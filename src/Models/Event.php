@@ -1,10 +1,10 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Models;
+namespace Sportic\Omniresult\Common\Models;
 
 /**
  * Class Event
- * @package Sportic\Timing\CommonClient\Models
+ * @package Sportic\Omniresult\Common\Models
  */
 class Event extends AbstractModel
 {

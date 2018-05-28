@@ -1,15 +1,15 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Content;
+namespace Sportic\Omniresult\Common\Content;
 
 use ArrayAccess;
-use Sportic\Timing\CommonClient\Content\Traits\AccessMethodsTrait;
-use Sportic\Timing\CommonClient\Content\Traits\ArrayAccessTrait;
-use Sportic\Timing\CommonClient\Helper;
+use Sportic\Omniresult\Common\Content\Traits\AccessMethodsTrait;
+use Sportic\Omniresult\Common\Content\Traits\ArrayAccessTrait;
+use Sportic\Omniresult\Common\Helper;
 
 /**
  * Class AbstractContent
- * @package Sportic\Timing\CommonClient\Content
+ * @package Sportic\Omniresult\Common\Content
  */
 abstract class AbstractContent implements ArrayAccess
 {

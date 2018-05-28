@@ -1,10 +1,10 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Scrapers;
+namespace Sportic\Omniresult\Common\Scrapers;
 
 use ByTIC\GouttePhantomJs\Clients\ClientFactory;
-use Sportic\Timing\CommonClient\Parsers\AbstractParser;
-use Sportic\Timing\CommonClient\Utility\ParametersTrait;
+use Sportic\Omniresult\Common\Parsers\AbstractParser;
+use Sportic\Omniresult\Common\Utility\ParametersTrait;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 

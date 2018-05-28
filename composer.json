@@ -1,5 +1,5 @@
 {
-  "name": "sportic/timing-common-client",
+  "name": "sportic/omniresult-common",
   "description": "a common client scraper for getting data from timing websites",
   "license": "MIT",
   "authors": [
@@ -10,12 +10,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Sportic\\Timing\\CommonClient\\": "src/"
+      "Sportic\\Omniresult\\Common\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Sportic\\Timing\\CommonClient\\Tests\\": "tests/"
+      "Sportic\\Omniresult\\Common\\Tests\\": "tests/"
     }
   },
   "require": {

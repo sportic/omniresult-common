@@ -1,17 +1,17 @@
 <?php
 
-namespace Sportic\Timing\CommonClient\Parsers;
+namespace Sportic\Omniresult\Common\Parsers;
 
-use Sportic\Timing\CommonClient\Content\AbstractContent;
-use Sportic\Timing\CommonClient\Content\ContentFactory;
-use Sportic\Timing\CommonClient\Content\GenericContent;
-use Sportic\Timing\CommonClient\Models\AbstractModel;
-use Sportic\Timing\CommonClient\Scrapers\AbstractScraper;
+use Sportic\Omniresult\Common\Content\AbstractContent;
+use Sportic\Omniresult\Common\Content\ContentFactory;
+use Sportic\Omniresult\Common\Content\GenericContent;
+use Sportic\Omniresult\Common\Models\AbstractModel;
+use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class AbstractParser
- * @package Sportic\Timing\CommonClient\Parsers
+ * @package Sportic\Omniresult\Common\Parsers
  */
 abstract class AbstractParser
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Sportic\Timing\CommonClient;
+namespace Sportic\Omniresult\Common;
 
 /**
  * Interface TimingClientInterface
- * @package Sportic\Timing\CommonClient
+ * @package Sportic\Omniresult\Common
  */
 interface TimingClientInterface
 {
