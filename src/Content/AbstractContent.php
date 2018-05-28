@@ -23,7 +23,12 @@ abstract class AbstractContent implements ArrayAccess
      */
     public function __construct($parameters = [])
     {
+        $this->initialize();
         $this->setParameters($parameters);
+    }
+
+    protected function initialize()
+    {
     }
 
     /**

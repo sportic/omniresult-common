@@ -11,6 +11,11 @@ use Sportic\Timing\CommonClient\Helper;
 abstract class AbstractModel
 {
     /**
+     * @var string
+     */
+    protected $parameters;
+
+    /**
      * AbstractModel constructor.
      *
      * @param array $parameters
@@ -32,9 +37,19 @@ abstract class AbstractModel
                     $this->$method($value);
                 } elseif (property_exists($this, $name)) {
                     $this->{$name} = $value;
+                } else {
+                    $this->parameters[$name] = $value;
                 }
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getParameters(): string
+    {
+        return $this->parameters;
     }
 
     /**

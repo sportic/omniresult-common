@@ -9,12 +9,16 @@ namespace Sportic\Timing\CommonClient\Models;
 class Result extends AbstractModel
 {
     protected $posGen;
+    protected $posCategory;
+    protected $posGender;
+
     protected $bib;
     protected $fullName;
-    protected $href;
+
     protected $time;
+
     protected $category;
-    protected $posCategory;
     protected $gender;
-    protected $posGender;
+
+    protected $href;
 }
