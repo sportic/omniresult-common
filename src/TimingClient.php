@@ -2,6 +2,9 @@
 
 namespace Sportic\Timing\CommonClient;
 
+use Sportic\Timing\CommonClient\Parsers\AbstractParser;
+use Sportic\Timing\CommonClient\Scrapers\AbstractScraper;
+
 /**
  * Class TimingClient
  * @package Sportic\Timing\CommonClient
@@ -12,13 +15,26 @@ class TimingClient implements TimingClientInterface
     /**
      * @param $class
      * @param $parameters
-     * @return mixed
+     * @return AbstractParser
      */
-    protected function createRequest($class, $parameters)
+    protected function executeScrapper($class, $parameters)
     {
+        $scrapper = static::createScrapper($class, $parameters);
 
-        $obj = new $class($this->httpClient, $this->httpRequest);
+        return $scrapper->execute();
+    }
 
-        return $obj->initialize(array_replace($this->getParameters(), $parameters));
+    /**
+     * @param $class
+     * @param $parameters
+     * @return AbstractScraper
+     */
+    protected static function createScrapper($class, $parameters)
+    {
+        /** @var AbstractScraper $obj */
+        $obj = new $class();
+        $obj->initialize($parameters);
+
+        return $obj;
     }
 }

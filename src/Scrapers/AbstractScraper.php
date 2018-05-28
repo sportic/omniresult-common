@@ -3,7 +3,8 @@
 namespace Sportic\Timing\CommonClient\Scrapers;
 
 use ByTIC\GouttePhantomJs\Clients\ClientFactory;
-use Sportic\Timing\RaceTecClient\Parsers\AbstractParser;
+use Sportic\Timing\CommonClient\Parsers\AbstractParser;
+use Sportic\Timing\CommonClient\Utility\ParametersTrait;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -13,6 +14,7 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 abstract class AbstractScraper
 {
+    use ParametersTrait;
 
     /**
      * @var Crawler
