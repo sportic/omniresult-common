@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d81da9ef8f12a7036ff94851e2382dd",
+    "content-hash": "3d13e33adeb1e560f1c6f92dae4383f4",
     "packages": [
         {
             "name": "bytic/goutte-phantomjs-bridge",
@@ -493,7 +493,7 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v4.0.10",
+            "version": "v4.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
@@ -550,7 +550,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.4.10",
+            "version": "v3.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -614,7 +614,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.0.10",
+            "version": "v4.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -737,7 +737,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.0.10",
+            "version": "v4.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -794,7 +794,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.10",
+            "version": "v3.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -958,7 +958,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.10",
+            "version": "v3.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
