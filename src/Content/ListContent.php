@@ -10,7 +10,7 @@ class ListContent extends AbstractContent
 {
     protected function initialize()
     {
-        $this->data['items'] = [];
+        $this->data['records'] = [];
         $this->data['pagination'] = [
             'current' => 1,
             'all'     => 1,
