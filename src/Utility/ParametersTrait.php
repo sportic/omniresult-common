@@ -24,7 +24,7 @@ trait ParametersTrait
      * @param $value
      * @return $this
      */
-    protected function setParameter($key, $value)
+    public function setParameter($key, $value)
     {
         $this->parameters->set($key, $value);
         return $this;
@@ -32,11 +32,12 @@ trait ParametersTrait
 
     /**
      * @param $key
+     * @param null $default
      * @return mixed
      */
-    protected function getParameter($key)
+    public function getParameter($key, $default = null)
     {
-        return $this->parameters->get($key);
+        return $this->parameters->get($key, $default);
     }
 
     /**
@@ -69,7 +70,7 @@ trait ParametersTrait
                 } elseif (property_exists($this, $name)) {
                     $this->{$name} = $value;
                 } else {
-                    $this->parameters[$name] = $value;
+                    $this->parameters->set($name, $value);
                 }
             }
         }
@@ -89,8 +90,8 @@ trait ParametersTrait
     public function validate(...$args)
     {
         foreach ($args as $key) {
-            $value = $this->parameters->get($key);
-            if (! isset($value)) {
+            $value = $this->getParameter($key);
+            if (!isset($value)) {
                 throw new InvalidRequestException("The $key parameter is required");
             }
         }

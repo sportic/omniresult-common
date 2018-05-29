@@ -15,7 +15,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Sportic\\Omniresult\\Common\\Tests\\": "tests/"
+      "Sportic\\Omniresult\\Common\\Tests\\": "tests/",
+      "Sportic\\Omniresult\\Common\\Tests\\Fixtures\\": "tests/fixtures"
     }
   },
   "require": {
