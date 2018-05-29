@@ -49,7 +49,7 @@ abstract class AbstractParser
     {
         if ($this->isValidCall()) {
             $contents = $this->generateContent();
-            $this->contents = ContentFactory::createFromArray($contents);
+            $this->contents = ContentFactory::createFromArray($contents, $this->getContentClassName());
         } else {
             $this->contents = false;
         }
