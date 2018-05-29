@@ -78,4 +78,19 @@ class Helper
 
         return $str;
     }
+
+    /**
+     * @param $href
+     * @param $parameter
+     * @return bool|mixed
+     */
+    public static function parseParameterFromHref($href, $parameter)
+    {
+        $query = parse_url($href, PHP_URL_QUERY);
+        parse_str($query, $output);
+        if (isset($output[$parameter])) {
+            return $output[$parameter];
+        }
+        return false;
+    }
 }
