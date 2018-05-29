@@ -14,6 +14,7 @@ use Sportic\Omniresult\Common\Helper;
 abstract class AbstractContent implements ArrayAccess
 {
     use ArrayAccessTrait, AccessMethodsTrait;
+
     protected $data = [];
 
     /**
@@ -44,10 +45,19 @@ abstract class AbstractContent implements ArrayAccess
                 } elseif (property_exists($this, $name)) {
                     $this->{$name} = $value;
                 } else {
-                    $this->data[$name] = $value;
+                    $this->setParameter($name, $value);
                 }
             }
         }
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     */
+    protected function setParameter($name, $value)
+    {
+        $this->data[$name] = $value;
     }
 
     /**
