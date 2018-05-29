@@ -7,6 +7,7 @@ use Sportic\Omniresult\Common\Content\ContentFactory;
 use Sportic\Omniresult\Common\Content\GenericContent;
 use Sportic\Omniresult\Common\Models\AbstractModel;
 use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
+use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -15,6 +16,7 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 abstract class AbstractParser
 {
+    use HasCallValidationTrait;
 
     /**
      * @var AbstractScraper
@@ -27,11 +29,6 @@ abstract class AbstractParser
     protected $crawler;
 
     /**
-     * @var null|boolean
-     */
-    protected $isValidContent = null;
-
-    /**
      * @var null|AbstractContent
      */
     protected $contents = null;
@@ -42,38 +39,23 @@ abstract class AbstractParser
     public function getContent()
     {
         if ($this->contents === null) {
-            if ($this->isValidContent()) {
-                $contents = $this->generateContent();
-                $this->contents = ContentFactory::createFromArray($contents);
-            } else {
-                $this->contents = false;
-            }
+            $this->initContents();
         }
 
         return $this->contents;
     }
 
-    abstract protected function generateContent();
-
-    /**
-     * @return bool|null
-     */
-    public function isValidContent()
+    protected function initContents()
     {
-        if ($this->isValidContent == null) {
-            $this->doValidation();
-            $this->isValidContent = true;
+        if ($this->isValidCall()) {
+            $contents = $this->generateContent();
+            $this->contents = ContentFactory::createFromArray($contents);
+        } else {
+            $this->contents = false;
         }
-
-        return $this->isValidContent;
     }
 
-    /**
-     * @return void
-     */
-    protected function doValidation()
-    {
-    }
+    abstract protected function generateContent();
 
     /**
      * @return AbstractScraper

@@ -4,6 +4,7 @@ namespace Sportic\Omniresult\Common\Scrapers;
 
 use ByTIC\GouttePhantomJs\Clients\ClientFactory;
 use Sportic\Omniresult\Common\Parsers\AbstractParser;
+use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
 use Sportic\Omniresult\Common\Utility\ParametersTrait;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
@@ -14,7 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 abstract class AbstractScraper
 {
-    use ParametersTrait;
+    use ParametersTrait, HasCallValidationTrait;
 
     /**
      * @var Crawler
@@ -27,10 +28,14 @@ abstract class AbstractScraper
     protected $client = null;
 
     /**
-     * @return AbstractParser
+     * @return bool|AbstractParser
      */
     public function execute()
     {
+        if (!$this->isValidCall()) {
+            return false;
+        }
+
         $crawler = $this->getCrawler();
         $parser = $this->getNewParser();
         $parser->setCrawler($crawler);
