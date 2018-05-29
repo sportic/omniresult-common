@@ -70,7 +70,7 @@ trait ParametersTrait
                 } elseif (property_exists($this, $name)) {
                     $this->{$name} = $value;
                 } else {
-                    $this->parameters->set($name, $value);
+                    $this->setParameter($name, $value);
                 }
             }
         }
