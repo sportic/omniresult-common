@@ -13,6 +13,11 @@ class Event extends AbstractModel
      */
     protected $name;
 
+    /**
+     * @var string
+     */
+    protected $id;
+
 
     /**
      * @return string
@@ -28,5 +33,21 @@ class Event extends AbstractModel
     public function setName(string $name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
     }
 }
