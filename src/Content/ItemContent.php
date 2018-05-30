@@ -6,17 +6,11 @@ namespace Sportic\Omniresult\Common\Content;
  * Class ListContent
  * @package Sportic\Omniresult\Common\Content
  */
-class ListContent extends AbstractContent
+class ItemContent extends AbstractContent
 {
     protected function initialize()
     {
-        $this->set('records', []);
-        $this->set('pagination', [
-            'current' => 1,
-            'all' => 1,
-            'items' => 0,
-            'nextUrl' => '',
-        ]);
+        $this->set('item', false);
     }
 
     /**

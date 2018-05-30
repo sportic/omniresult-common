@@ -8,6 +8,8 @@ namespace Sportic\Omniresult\Common\Models;
  */
 class Result extends AbstractModel
 {
+    protected $id;
+
     protected $posGen;
     protected $posCategory;
     protected $posGender;
@@ -21,4 +23,18 @@ class Result extends AbstractModel
     protected $gender;
 
     protected $href;
+
+    /**
+     * @var SplitCollection
+     */
+    protected $splits;
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct($parameters = [])
+    {
+        parent::__construct($parameters);
+        $this->splits = new SplitCollection();
+    }
 }

@@ -3,8 +3,8 @@
 namespace Sportic\Omniresult\Common\Content;
 
 use ArrayAccess;
-use Sportic\Omniresult\Common\Content\Traits\AccessMethodsTrait;
-use Sportic\Omniresult\Common\Content\Traits\ArrayAccessTrait;
+use Sportic\Omniresult\Common\Utility\Traits\ArrayMethodsTrait;
+use Sportic\Omniresult\Common\Utility\Traits\ArrayAccessTrait;
 use Sportic\Omniresult\Common\Helper;
 
 /**
@@ -13,9 +13,7 @@ use Sportic\Omniresult\Common\Helper;
  */
 abstract class AbstractContent implements ArrayAccess
 {
-    use ArrayAccessTrait, AccessMethodsTrait;
-
-    protected $data = [];
+    use ArrayAccessTrait, ArrayMethodsTrait;
 
     /**
      * AbstractContent constructor.
@@ -57,7 +55,7 @@ abstract class AbstractContent implements ArrayAccess
      */
     protected function setParameter($name, $value)
     {
-        $this->data[$name] = $value;
+        $this->set($name, $value);
     }
 
     /**
@@ -65,6 +63,6 @@ abstract class AbstractContent implements ArrayAccess
      */
     public function __toArray()
     {
-        return Helper::objectToArray($this->data);
+        return Helper::objectToArray($this->items);
     }
 }

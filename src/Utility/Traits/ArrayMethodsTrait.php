@@ -1,20 +1,21 @@
 <?php
 
-namespace Sportic\Omniresult\Common\Content\Traits;
+namespace Sportic\Omniresult\Common\Utility\Traits;
 
 /**
- * Class AccessMethodsTrait
+ * Class ArrayMethodsTrait
  * @package Nip\Collections\Traits
  */
-trait AccessMethodsTrait
+trait ArrayMethodsTrait
 {
+    protected $items;
 
     /**
      * @param array $items
      */
     public function setItems($items)
     {
-        $this->data = $items;
+        $this->items = $items;
     }
 
     /**
@@ -24,7 +25,7 @@ trait AccessMethodsTrait
     public function add($element, $key = null)
     {
         if ($key == null) {
-            $this->data[] = $element;
+            $this->items[] = $element;
             return;
         }
         $this->set($key, $element);
@@ -36,7 +37,7 @@ trait AccessMethodsTrait
      */
     public function set($id, $value)
     {
-        $this->data[$id] = $value;
+        $this->items[$id] = $value;
     }
 
     /**
@@ -49,7 +50,7 @@ trait AccessMethodsTrait
      */
     public function get($key, $default = null)
     {
-        return array_key_exists($key, $this->data) ? $this->data[$key] : $default;
+        return array_key_exists($key, $this->items) ? $this->items[$key] : $default;
     }
 
     /**
@@ -58,7 +59,7 @@ trait AccessMethodsTrait
      */
     public function has($key)
     {
-        return isset($this->data[$key]) || array_key_exists($key, $this->data);
+        return isset($this->items[$key]) || array_key_exists($key, $this->items);
     }
 
     /**
@@ -79,7 +80,7 @@ trait AccessMethodsTrait
      */
     public function all()
     {
-        return $this->data;
+        return $this->items;
     }
 
     /**
@@ -89,7 +90,7 @@ trait AccessMethodsTrait
      */
     public function keys()
     {
-        return array_keys($this->data);
+        return array_keys($this->items);
     }
 
     /**
@@ -99,7 +100,7 @@ trait AccessMethodsTrait
      */
     public function values()
     {
-        return array_values($this->data);
+        return array_values($this->items);
     }
 
 
@@ -109,11 +110,24 @@ trait AccessMethodsTrait
      */
     public function unset($key)
     {
-        if (!isset($this->items[$key]) && !array_key_exists($key, $this->data)) {
+        if (!isset($this->items[$key]) && !array_key_exists($key, $this->items)) {
             return null;
         }
-        $removed = $this->data[$key];
-        unset($this->data[$key]);
+        $removed = $this->items[$key];
+        unset($this->items[$key]);
         return $removed;
+    }
+    /**
+     * Count elements of an object
+     * @link http://php.net/manual/en/countable.count.php
+     * @return int The custom count as an integer.
+     * </p>
+     * <p>
+     * The return value is cast to an integer.
+     * @since 5.1.0
+     */
+    public function count()
+    {
+        return count($this->items);
     }
 }

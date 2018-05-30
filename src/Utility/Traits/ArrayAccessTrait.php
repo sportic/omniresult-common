@@ -1,6 +1,6 @@
 <?php
 
-namespace Sportic\Omniresult\Common\Content\Traits;
+namespace Sportic\Omniresult\Common\Utility\Traits;
 
 /**
  * Class ArrayAccessTrait
