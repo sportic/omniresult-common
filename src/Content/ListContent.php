@@ -34,7 +34,7 @@ class ListContent extends AbstractContent
     /**
      * @return mixed
      */
-    protected function getRecords()
+    public function getRecords()
     {
         return $this->get('records');
     }

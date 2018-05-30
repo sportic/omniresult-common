@@ -26,6 +26,7 @@ trait ParametersTrait
      */
     public function setParameter($key, $value)
     {
+        $this->checkInitParameters();
         $this->parameters->set($key, $value);
         return $this;
     }
@@ -37,6 +38,7 @@ trait ParametersTrait
      */
     public function getParameter($key, $default = null)
     {
+        $this->checkInitParameters();
         return $this->parameters->get($key, $default);
     }
 
@@ -47,6 +49,7 @@ trait ParametersTrait
      */
     public function getParameters()
     {
+        $this->checkInitParameters();
         return $this->parameters->all();
     }
 
@@ -60,7 +63,7 @@ trait ParametersTrait
      */
     public function initialize(array $parameters = [])
     {
-        $this->parameters = new ParameterBag;
+        $this->checkInitParameters();
 
         if (is_array($parameters)) {
             foreach ($parameters as $name => $value) {
@@ -76,6 +79,13 @@ trait ParametersTrait
         }
 
         return $this;
+    }
+
+    protected function checkInitParameters()
+    {
+        if (!is_object($this->parameters)) {
+            $this->parameters = new ParameterBag();
+        }
     }
 
     /**

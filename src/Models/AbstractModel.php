@@ -36,7 +36,7 @@ abstract class AbstractModel
                 } elseif (property_exists($this, $name)) {
                     $this->{$name} = $value;
                 } else {
-                    $this->parameters[$name] = $value;
+                    $this->setParameter($name, $value);
                 }
             }
         }
