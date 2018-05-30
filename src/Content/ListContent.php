@@ -30,4 +30,12 @@ class ListContent extends AbstractContent
             parent::setParameter($name, $value);
         }
     }
+
+    /**
+     * @return mixed
+     */
+    protected function getRecords()
+    {
+        return $this->get('records');
+    }
 }

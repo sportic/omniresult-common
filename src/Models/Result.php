@@ -197,4 +197,21 @@ class Result extends AbstractModel
     {
         $this->href = $href;
     }
+
+    /**
+     * @return SplitCollection
+     */
+    public function getSplits(): SplitCollection
+    {
+        return $this->splits;
+    }
+
+    /**
+     * @param SplitCollection $splits
+     */
+    public function setSplits(SplitCollection $splits): void
+    {
+        $this->splits = $splits;
+    }
+
 }

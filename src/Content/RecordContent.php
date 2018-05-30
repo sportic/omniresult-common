@@ -6,11 +6,11 @@ namespace Sportic\Omniresult\Common\Content;
  * Class ListContent
  * @package Sportic\Omniresult\Common\Content
  */
-class ItemContent extends AbstractContent
+class RecordContent extends AbstractContent
 {
     protected function initialize()
     {
-        $this->set('item', false);
+        $this->set('record', false);
     }
 
     /**
@@ -23,5 +23,13 @@ class ItemContent extends AbstractContent
         if ($this->has($name)) {
             parent::setParameter($name, $value);
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getRecord()
+    {
+        return $this->get('record');
     }
 }
