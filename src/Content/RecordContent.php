@@ -28,7 +28,7 @@ class RecordContent extends AbstractContent
     /**
      * @return mixed
      */
-    protected function getRecord()
+    public function getRecord()
     {
         return $this->get('record');
     }

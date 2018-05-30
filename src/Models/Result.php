@@ -22,6 +22,8 @@ class Result extends AbstractModel
     protected $category;
     protected $gender;
 
+    protected $status;
+
     protected $href;
 
     /**
@@ -180,6 +182,22 @@ class Result extends AbstractModel
     public function setGender($gender): void
     {
         $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
     }
 
     /**
