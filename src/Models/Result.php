@@ -36,8 +36,8 @@ class Result extends AbstractModel
      */
     public function __construct($parameters = [])
     {
-        parent::__construct($parameters);
         $this->splits = new SplitCollection();
+        parent::__construct($parameters);
     }
 
     /**
