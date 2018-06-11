@@ -10,7 +10,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Sportic\\Omniresult\\Common\\": "src/"
+      "Sportic\\Omniresult\\": "src/"
     }
   },
   "autoload-dev": {
