@@ -23,7 +23,7 @@ trait HasDetectorTrait
             return new DetectorResult();
         }
         $detectorClass = $this->getDetectorClassName();
-        return call_user_func($detectorClass .'::doSomething', [$url]);
+        return call_user_func($detectorClass .'::detect', $url);
     }
 
     /**

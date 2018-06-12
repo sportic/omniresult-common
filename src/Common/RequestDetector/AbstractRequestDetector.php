@@ -51,8 +51,12 @@ abstract class AbstractRequestDetector
             return;
         }
 
+        $this->getResult()->setValid(true);
+
         $this->getResult()->setAction($this->detectAction());
-        $this->getResult()->setParams($this->detectParams());
+
+        $params = $this->detectParams();
+        $this->getResult()->setParams(is_array($params) ? $params : []);
     }
 
     protected function prepareInvestigation()

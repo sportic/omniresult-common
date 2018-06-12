@@ -12,6 +12,8 @@ class DetectorResult
 {
     protected $client;
 
+    protected $valid = false;
+
     protected $action;
 
     protected $params = [];
@@ -21,7 +23,15 @@ class DetectorResult
      */
     public function isValid()
     {
-        return $this->hasClient();
+        return $this->valid;
+    }
+
+    /**
+     * @param bool $valid
+     */
+    public function setValid(bool $valid): void
+    {
+        $this->valid = $valid;
     }
 
     /**
