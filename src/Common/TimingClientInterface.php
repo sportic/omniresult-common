@@ -8,7 +8,10 @@ namespace Sportic\Omniresult\Common;
  */
 interface TimingClientInterface
 {
-    //public function events($parameters)
+    /**
+     * @return string
+     */
+    public function getName();
 
     //public function results($parameters)
 

@@ -2,8 +2,7 @@
 
 namespace Sportic\Omniresult\Common\Tests;
 
-use Mockery as m;
-use Sportic\Omniresult\Common\TimingClient\TimingClientFactory;
+use Sportic\Omniresult\Common\Tests\Fixtures\FakeTimer\FakeTimerClient;
 use Sportic\Omniresult\Omniresult;
 
 /**
@@ -12,4 +11,19 @@ use Sportic\Omniresult\Omniresult;
  */
 class OmniresultTest extends AbstractTest
 {
+
+    public function testRegisterWithObject()
+    {
+        $client = new Fixtures\FakeTimer\FakeTimerClient();
+        Omniresult::register($client);
+
+        self::assertSame($client, Omniresult::create('FakeTimer'));
+    }
+
+    public function testRegisterWithString()
+    {
+        Omniresult::register('FakeTimer');
+
+        self::assertInstanceOf(FakeTimerClient::class, Omniresult::create('FakeTimer'));
+    }
 }

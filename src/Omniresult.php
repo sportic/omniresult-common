@@ -52,13 +52,18 @@ class Omniresult
     }
 
     /**
-     * @return Common\TimingClientInterface[]
+     * @param TimingClientInterface|string $client
+     * @return void
      */
     public static function register($client)
     {
         if ($client instanceof TimingClientInterface) {
             $name = $client->getName();
+        } else {
+            $name = $client;
+            $client = self::create($name);
         }
+        self::getCollection()->set($name, $client);
     }
 
     /**
