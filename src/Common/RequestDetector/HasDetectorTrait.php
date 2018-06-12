@@ -14,11 +14,6 @@ trait HasDetectorTrait
     protected $detectorClassName = null;
 
     /**
-     * @var null|false|AbstractRequestDetector
-     */
-    protected $detector = null;
-
-    /**
      * @param $url
      * @return DetectorResult
      */
@@ -27,7 +22,8 @@ trait HasDetectorTrait
         if (!$this->hasDetector()) {
             return new DetectorResult();
         }
-        $this->getDetector()::detect($url);
+        $detectorClass = $this->getDetectorClassName();
+        return call_user_func($detectorClass .'::doSomething', [$url]);
     }
 
     /**
@@ -35,40 +31,13 @@ trait HasDetectorTrait
      */
     public function hasDetector()
     {
-        return $this->getDetector() instanceof AbstractRequestDetector;
-    }
-    /**
-     * @return false|null|AbstractRequestDetector
-     */
-    protected function getDetector()
-    {
-        if ($this->detector === null) {
-            $this->initDetector();
-        }
-        return $this->detector;
-    }
-
-    protected function initDetector()
-    {
-        $this->detector = $this->generateDetector();
-    }
-
-    /**
-     * @return bool|AbstractRequestDetector
-     */
-    protected function generateDetector()
-    {
-        if (!$this->hasDetectorClass()) {
-            return false;
-        }
-        $class = $this->getDetectorClassName();
-        return new $class();
+        return $this->hasDetectorClass();
     }
 
     /**
      * @return bool
      */
-    public function hasDetectorClass()
+    protected function hasDetectorClass()
     {
         $class = $this->getDetectorClassName();
         return class_exists($class);

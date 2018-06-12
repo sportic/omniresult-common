@@ -19,6 +19,14 @@ class DetectorResult
     /**
      * @return bool
      */
+    public function isValid()
+    {
+        return $this->hasClient();
+    }
+
+    /**
+     * @return bool
+     */
     public function hasClient()
     {
         return $this->getClient() instanceof TimingClientInterface;
