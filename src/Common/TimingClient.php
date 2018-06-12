@@ -21,6 +21,16 @@ abstract class TimingClient implements TimingClientInterface
     }
 
     /**
+     * Supports Detect
+     *
+     * @return boolean True if this gateway supports the authorize() method
+     */
+    public function supportsDetect()
+    {
+        return method_exists($this, 'hasDetector') && $this->hasDetector();
+    }
+
+    /**
      * @param $class
      * @param $parameters
      * @return AbstractParser

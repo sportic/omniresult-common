@@ -16,26 +16,27 @@
       <usages-collector id="statistics.php.rename.constructor" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="33" />
+          <entry key="PHP" value="48" />
           <entry key="composer.json" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="968" />
-          <entry key="PLAIN_TEXT" value="88" />
+          <entry key="PHP" value="2814" />
+          <entry key="PLAIN_TEXT" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="968" />
+          <entry key="dummy" value="7" />
+          <entry key="php" value="2814" />
           <entry key="txt" value="88" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="json" value="2" />
-          <entry key="php" value="33" />
+          <entry key="php" value="48" />
         </counts>
       </usages-collector>
     </session>

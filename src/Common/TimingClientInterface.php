@@ -13,7 +13,10 @@ interface TimingClientInterface
      */
     public function getName();
 
-    //public function results($parameters)
+    /**
+     * @return bool
+     */
+    public function supportsDetect();
 
     //public function result($parameters)
 }

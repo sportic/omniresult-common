@@ -3,6 +3,7 @@
 namespace Sportic\Omniresult;
 
 use Sportic\Omniresult\Common\TimingClient\TimingClientCollection;
+use Sportic\Omniresult\Common\TimingClient\TimingClientDetector;
 use Sportic\Omniresult\Common\TimingClient\TimingClientFactory;
 use Sportic\Omniresult\Common\TimingClientInterface;
 
@@ -64,6 +65,15 @@ class Omniresult
             $client = self::create($name);
         }
         self::getCollection()->set($name, $client);
+    }
+
+    /**
+     * @param TimingClientInterface|string $client
+     * @return void
+     */
+    public static function detect($url)
+    {
+        $detector = new TimingClientDetector();
     }
 
     /**

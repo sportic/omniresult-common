@@ -2,6 +2,7 @@
 
 namespace Sportic\Omniresult\Common\Tests\Fixtures\FakeTimer;
 
+use Sportic\Omniresult\Common\RequestDetector\HasDetectorTrait;
 use Sportic\Omniresult\Common\TimingClient;
 
 /**
@@ -10,4 +11,5 @@ use Sportic\Omniresult\Common\TimingClient;
  */
 class FakeTimerClient extends TimingClient
 {
+    use HasDetectorTrait;
 }

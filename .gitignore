@@ -1,3 +1,5 @@
 vendor/
 .idea/dictionaries/
 .idea/workspace.xml
+.idea/usage.statistics.xml
+/.idea/usage.statistics.xml
