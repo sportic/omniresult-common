@@ -2,6 +2,7 @@
 
 namespace Sportic\Omniresult;
 
+use Sportic\Omniresult\Common\TimingClient\TimingClientCollection;
 use Sportic\Omniresult\Common\TimingClient\TimingClientFactory;
 
 /**
@@ -17,6 +18,37 @@ class Omniresult
      */
     protected static $factory;
 
+    /**
+     * Internal storage for all available gateways
+     *
+     * @var TimingClientCollection
+     */
+    protected static $gateways;
+
+    /**
+     * @param string $name
+     * @return Common\TimingClientInterface
+     */
+    public static function create($name)
+    {
+        if (self::getCollection()->has($name)) {
+            return self::getCollection()->get($name);
+        }
+        $factory = self::getFactory();
+
+        $client = $factory::create($name);
+        self::getCollection()->set($name, $client);
+
+        return $client;
+    }
+
+    /**
+     * @return Common\TimingClientInterface[]
+     */
+    public static function all()
+    {
+        return self::getCollection()->all();
+    }
 
     /**
      * Get the gateway factory
@@ -34,6 +66,17 @@ class Omniresult
     }
 
     /**
+     * @return TimingClientCollection
+     */
+    public static function getCollection()
+    {
+        if (is_null(self::$gateways)) {
+            self::$gateways = new TimingClientCollection;
+        }
+        return self::$gateways;
+    }
+
+    /**
      * Set the gateway factory
      *
      * @param TimingClientFactory $factory A GatewayFactory instance
@@ -41,32 +84,5 @@ class Omniresult
     public static function setFactory(TimingClientFactory $factory = null)
     {
         self::$factory = $factory;
-    }
-
-    /**
-     * Static function call router.
-     *
-     * All other function calls to the Omnipay class are routed to the
-     * factory.  e.g. Omnipay::getSupportedGateways(1, 2, 3, 4) is routed to the
-     * factory's getSupportedGateways method and passed the parameters 1, 2, 3, 4.
-     *
-     * Example:
-     *
-     * <code>
-     *   // Create a gateway for the PayPal ExpressGateway
-     *   $gateway = Omnipay::create('ExpressGateway');
-     * </code>
-     *
-     * @see GatewayFactory
-     *
-     * @param string $method The factory method to invoke.
-     * @param array $parameters Parameters passed to the factory method.
-     *
-     * @return mixed
-     */
-    public static function __callStatic($method, $parameters)
-    {
-        $factory = self::getFactory();
-        return call_user_func_array([$factory, $method], $parameters);
     }
 }
