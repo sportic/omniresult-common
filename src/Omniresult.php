@@ -4,6 +4,7 @@ namespace Sportic\Omniresult;
 
 use Sportic\Omniresult\Common\TimingClient\TimingClientCollection;
 use Sportic\Omniresult\Common\TimingClient\TimingClientFactory;
+use Sportic\Omniresult\Common\TimingClientInterface;
 
 /**
  * Class Omniresult
@@ -48,6 +49,16 @@ class Omniresult
     public static function all()
     {
         return self::getCollection()->all();
+    }
+
+    /**
+     * @return Common\TimingClientInterface[]
+     */
+    public static function register($client)
+    {
+        if ($client instanceof TimingClientInterface) {
+            $name = $client->getName();
+        }
     }
 
     /**

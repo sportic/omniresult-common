@@ -9,8 +9,16 @@ use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
  * Class TimingClient
  * @package Sportic\Omniresult\Common
  */
-class TimingClient implements TimingClientInterface
+abstract class TimingClient implements TimingClientInterface
 {
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        $path = explode('\\', static::class);
+        return str_replace(['Client'], '', array_pop($path));
+    }
 
     /**
      * @param $class

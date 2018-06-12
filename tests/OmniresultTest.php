@@ -12,15 +12,4 @@ use Sportic\Omniresult\Omniresult;
  */
 class OmniresultTest extends AbstractTest
 {
-
-    public function testCallStatic()
-    {
-        /** @var TimingClientFactory $factory */
-        $factory = m::mock('\Sportic\Omniresult\Common\TimingClient\TimingClientFactory');
-        $factory->shouldReceive('testMethod')->with('some-argument')->once()->andReturn('some-result');
-
-        Omniresult::setFactory($factory);
-        $result = Omniresult::testMethod('some-argument');
-        static::assertSame('some-result', $result);
-    }
 }
