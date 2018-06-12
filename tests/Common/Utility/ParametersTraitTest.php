@@ -1,6 +1,6 @@
 <?php
 
-namespace Sportic\Omniresult\Common\Tests\Utility;
+namespace Sportic\Omniresult\Common\Tests\Common\Utility;
 
 use Sportic\Omniresult\Common\Tests\AbstractTest;
 use Sportic\Omniresult\Common\Tests\Fixtures\Utility\EmptyObjectWithParameters;

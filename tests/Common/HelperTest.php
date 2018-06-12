@@ -1,8 +1,9 @@
 <?php
 
-namespace Sportic\Omniresult\Common\Tests;
+namespace Sportic\Omniresult\Common\Tests\Common;
 
 use Sportic\Omniresult\Common\Helper;
+use Sportic\Omniresult\Common\Tests\AbstractTest;
 
 /**
  * Class HelperTest
