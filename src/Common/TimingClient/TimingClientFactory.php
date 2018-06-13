@@ -48,7 +48,7 @@ class TimingClientFactory
     public static function getSupportedClients()
     {
         return [
-            'racetec'
+            'RaceTec'
         ];
     }
 }

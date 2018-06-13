@@ -74,7 +74,7 @@ class Omniresult
      */
     public static function detect($url)
     {
-        return ClientDetector::detect($url, static::all());
+        return ClientDetector::detect($url, static::getCollection());
     }
 
     public static function registerAllSupportedGateways()
