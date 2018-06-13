@@ -2,6 +2,8 @@
 
 namespace Sportic\Omniresult\Common\RequestDetector;
 
+use Sportic\Omniresult\Common\Exception\RuntimeException;
+
 /**
  * Trait HasDetectorTrait
  * @package Sportic\Omniresult\Common\ClientDetector
@@ -20,10 +22,13 @@ trait HasDetectorTrait
     public function detect($url)
     {
         if (!$this->hasDetector()) {
-            return new DetectorResult();
+            throw new RuntimeException(
+                "Client {$this->getName()} does not support detect. 
+                Client has no detector class {$this->getDetectorClassName()}
+                ");
         }
         $detectorClass = $this->getDetectorClassName();
-        return call_user_func($detectorClass .'::detect', $url);
+        return call_user_func($detectorClass . '::detect', $url);
     }
 
     /**

@@ -2,8 +2,9 @@
 
 namespace Sportic\Omniresult;
 
+use Sportic\Omniresult\Common\RequestDetector\ClientDetector;
+use Sportic\Omniresult\Common\RequestDetector\DetectorResult;
 use Sportic\Omniresult\Common\TimingClient\TimingClientCollection;
-use Sportic\Omniresult\Common\TimingClient\TimingClientDetector;
 use Sportic\Omniresult\Common\TimingClient\TimingClientFactory;
 use Sportic\Omniresult\Common\TimingClientInterface;
 
@@ -45,7 +46,7 @@ class Omniresult
     }
 
     /**
-     * @return Common\TimingClientInterface[]
+     * @return Common\TimingClientInterface[]|TimingClientCollection
      */
     public static function all()
     {
@@ -68,12 +69,20 @@ class Omniresult
     }
 
     /**
-     * @param TimingClientInterface|string $client
-     * @return void
+     * @param string $url
+     * @return DetectorResult
      */
     public static function detect($url)
     {
-        $detector = new TimingClientDetector();
+        return ClientDetector::detect($url, static::all());
+    }
+
+    public static function registerAllSupportedGateways()
+    {
+        $clients = TimingClientFactory::getSupportedClients();
+        foreach ($clients as $client) {
+            static::create($client);
+        }
     }
 
     /**

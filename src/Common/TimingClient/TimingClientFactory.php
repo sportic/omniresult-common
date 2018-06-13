@@ -45,7 +45,7 @@ class TimingClientFactory
     /**
      * @return array
      */
-    public function getSupportedClients()
+    public static function getSupportedClients()
     {
         return [
             'racetec'

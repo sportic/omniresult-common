@@ -3,6 +3,7 @@
 namespace Sportic\Omniresult\Common\RequestDetector;
 
 use Sportic\Omniresult\Common\TimingClient\TimingClientCollection;
+use Sportic\Omniresult\Common\TimingClientInterface;
 
 /**
  * Class ClientDetector
@@ -34,6 +35,7 @@ class ClientDetector
     /**
      * @param string $url
      * @param TimingClientCollection $gateways
+     * @return DetectorResult
      */
     public static function detect(string $url, TimingClientCollection $gateways)
     {
@@ -41,15 +43,21 @@ class ClientDetector
         return $detector->detectClient();
     }
 
+    /**
+     * @return DetectorResult
+     */
     protected function detectClient()
     {
         foreach ($this->clients as $client) {
             if ($client->supportsDetect()) {
+                /** @var TimingClientInterface|HasDetectorTrait $client */
                 $result = $client->detect($this->url);
-                if ($result->hasClient()) {
+                if ($result->isValid()) {
+                    $result->setClient($client);
                     return $result;
                 }
             }
         }
+        return new DetectorResult();
     }
 }
