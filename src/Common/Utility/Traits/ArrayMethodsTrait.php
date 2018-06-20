@@ -8,7 +8,7 @@ namespace Sportic\Omniresult\Common\Utility\Traits;
  */
 trait ArrayMethodsTrait
 {
-    protected $items;
+    protected $items = [];
 
     /**
      * @param array $items

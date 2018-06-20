@@ -63,6 +63,12 @@ abstract class AbstractModel
      */
     public function __toArray()
     {
-        return get_object_vars($this);
+        $properties = get_object_vars($this);
+        $return = [];
+        foreach ($properties as $name => $value) {
+            $value = is_object($value) ? Helper::objectToArray($value) : $value;
+            $return[$name] = $value;
+        }
+        return $return;
     }
 }
