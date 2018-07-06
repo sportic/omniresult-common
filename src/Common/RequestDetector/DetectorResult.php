@@ -18,6 +18,8 @@ class DetectorResult
 
     protected $params = [];
 
+    protected $mapping = [];
+
     /**
      * @return bool
      */
@@ -88,5 +90,29 @@ class DetectorResult
     public function setParams(array $params): void
     {
         $this->params = $params;
+    }
+
+    /**
+     * @return bool
+     */
+    public function needsMapping(): bool
+    {
+        return count($this->mapping) > 0;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMapping(): array
+    {
+        return $this->mapping;
+    }
+
+    /**
+     * @param array $mapping
+     */
+    public function setMapping(array $mapping): void
+    {
+        $this->mapping = $mapping;
     }
 }
