@@ -21,6 +21,7 @@ class Result extends AbstractModel
 
     protected $category;
     protected $gender;
+    protected $country;
 
     protected $status;
 
@@ -149,6 +150,7 @@ class Result extends AbstractModel
      */
     public function setTime($time): void
     {
+        $time = str_replace(',', '.', $time);
         $this->time = $time;
     }
 
@@ -181,7 +183,15 @@ class Result extends AbstractModel
      */
     public function setGender($gender): void
     {
-        $this->gender = $gender;
+        $gender = strtolower($gender);
+        switch ($gender) {
+            case 'm' :
+            case 'male' :
+                $this->gender = 'male';
+                break;
+            default:
+                $this->gender = $gender;
+        }
     }
 
     /**
@@ -232,4 +242,19 @@ class Result extends AbstractModel
         $this->splits = $splits;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country): void
+    {
+        $this->country = $country;
+    }
 }
