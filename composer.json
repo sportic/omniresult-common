@@ -10,7 +10,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "Sportic\\Omniresult\\": "src/"
+      "Sportic\\Omniresult\\": "src/",
+      "Sportic\\Omniresult\\Common\\Tests\\": "tests/Helpers"
     }
   },
   "autoload-dev": {
