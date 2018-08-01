@@ -2,12 +2,20 @@
 
 namespace Sportic\Omniresult\Common\Models;
 
+use DateTime;
+
 /**
  * Class Event
  * @package Sportic\Omniresult\Common\Models
  */
 class Event extends AbstractModel
 {
+
+    /**
+     * @var string
+     */
+    protected $id;
+
     /**
      * @var string
      */
@@ -16,7 +24,28 @@ class Event extends AbstractModel
     /**
      * @var string
      */
-    protected $id;
+    protected $city;
+
+    /**
+     * @var DateTime
+     */
+    protected $date;
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
 
 
     /**
@@ -38,16 +67,52 @@ class Event extends AbstractModel
     /**
      * @return string
      */
-    public function getId(): string
+    public function getCity(): string
     {
-        return $this->id;
+        return $this->city;
     }
 
     /**
-     * @param string $id
+     * @param string $city
      */
-    public function setId(string $id): void
+    public function setCity(string $city): void
     {
-        $this->id = $id;
+        $this->city = $city;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDate(): DateTime
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param DateTime $date
+     */
+    public function setDate(DateTime $date): void
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasDate()
+    {
+        return $this->getDate() instanceof DateTime;
+    }
+
+    /**
+     * @param string $format
+     * @param string $date
+     */
+    public function setDateFromFormat($format, $date): void
+    {
+        $date = DateTime::createFromFormat($format, $date);
+        if ($date instanceof DateTime) {
+            $this->setDate($date);
+        }
     }
 }
