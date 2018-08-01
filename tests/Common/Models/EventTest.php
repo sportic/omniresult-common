@@ -11,7 +11,6 @@ use Sportic\Omniresult\Common\Tests\AbstractTest;
  */
 class EventTest extends AbstractTest
 {
-
     public function testToArrayWithEmptyResult()
     {
         $object = new Event();
