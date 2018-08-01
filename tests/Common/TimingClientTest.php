@@ -12,7 +12,6 @@ use Sportic\Omniresult\Common\Tests\Fixtures\FakeTimer\FakeTimerClient;
  */
 class TimingClientTest extends AbstractTest
 {
-
     public function testGetName()
     {
         $client = new FakeTimerClient();

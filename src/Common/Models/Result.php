@@ -185,8 +185,8 @@ class Result extends AbstractModel
     {
         $gender = strtolower($gender);
         switch ($gender) {
-            case 'm' :
-            case 'male' :
+            case 'm':
+            case 'male':
                 $this->gender = 'male';
                 break;
             default:

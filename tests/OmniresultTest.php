@@ -11,7 +11,6 @@ use Sportic\Omniresult\Omniresult;
  */
 class OmniresultTest extends AbstractTest
 {
-
     public function testRegisterWithObject()
     {
         $client = new Fixtures\FakeTimer\FakeTimerClient();

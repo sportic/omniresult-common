@@ -11,7 +11,6 @@ use Sportic\Omniresult\Common\Tests\AbstractTest;
  */
 class ResultTest extends AbstractTest
 {
-
     public function testToArrayWithEmptyResult()
     {
         $result = new Result();

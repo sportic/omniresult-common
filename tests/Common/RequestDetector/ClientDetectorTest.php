@@ -14,7 +14,6 @@ use Sportic\Omniresult\Common\TimingClient\TimingClientCollection;
  */
 class ClientDetectorTest extends AbstractTest
 {
-
     public function testDetect()
     {
         $client = new FakeTimerClient();
