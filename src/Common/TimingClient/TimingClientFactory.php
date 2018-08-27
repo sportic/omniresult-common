@@ -48,7 +48,8 @@ class TimingClientFactory
     public static function getSupportedClients()
     {
         return [
-            'RaceTec'
+            'RaceTec',
+            'TrackMyRace'
         ];
     }
 }
