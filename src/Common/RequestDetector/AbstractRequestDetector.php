@@ -66,14 +66,15 @@ abstract class AbstractRequestDetector
 
     /**
      * @param $component
+     * @param null $default
      * @return mixed
      */
-    protected function getUrlComponent($component)
+    protected function getUrlComponent($component, $default = null)
     {
         if ($this->urlComponents === null) {
             $this->initUrlComponents();
         }
-        return $this->urlComponents[$component];
+        return isset($this->urlComponents[$component]) ? $this->urlComponents[$component] : $default;
     }
 
     protected function initUrlComponents()
