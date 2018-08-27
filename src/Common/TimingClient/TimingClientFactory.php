@@ -49,7 +49,7 @@ class TimingClientFactory
     {
         return [
             'RaceTec',
-            'TrackMyRace'
+            'Trackmyrace'
         ];
     }
 }
