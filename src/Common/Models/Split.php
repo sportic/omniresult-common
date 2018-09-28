@@ -9,8 +9,14 @@ namespace Sportic\Omniresult\Common\Models;
 class Split extends AbstractModel
 {
     protected $name;
+
     protected $time;
     protected $timeFromStart;
+    protected $timeOfDay;
+
+    protected $posGen;
+    protected $posCategory;
+    protected $posGender;
 
     /**
      * @return mixed
@@ -34,5 +40,37 @@ class Split extends AbstractModel
     public function getTimeFromStart()
     {
         return $this->timeFromStart;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeOfDay()
+    {
+        return $this->timeOfDay;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosGen()
+    {
+        return $this->posGen;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosCategory()
+    {
+        return $this->posCategory;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosGender()
+    {
+        return $this->posGender;
     }
 }

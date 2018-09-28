@@ -23,6 +23,8 @@ class Result extends AbstractModel
     protected $gender;
     protected $country;
 
+    protected $club;
+
     protected $status;
 
     protected $href;
@@ -256,5 +258,21 @@ class Result extends AbstractModel
     public function setCountry($country): void
     {
         $this->country = $country;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClub()
+    {
+        return $this->club;
+    }
+
+    /**
+     * @param mixed $club
+     */
+    public function setClub($club): void
+    {
+        $this->club = $club;
     }
 }
