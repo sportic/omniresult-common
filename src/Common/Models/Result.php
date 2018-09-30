@@ -237,10 +237,16 @@ class Result extends AbstractModel
     }
 
     /**
-     * @param SplitCollection $splits
+     * @param SplitCollection|array $newSplits
      */
-    public function setSplits(SplitCollection $splits): void
+    public function setSplits($newSplits): void
     {
+        if (is_array($newSplits)) {
+            $splits = new SplitCollection();
+            $splits->setItems($newSplits);
+        } else {
+            $splits = $newSplits;
+        }
         $this->splits = $splits;
     }
 
