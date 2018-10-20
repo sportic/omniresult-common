@@ -4,10 +4,10 @@ namespace Sportic\Omniresult\Common\Scrapers;
 
 use ByTIC\GouttePhantomJs\Clients\ClientFactory;
 use Sportic\Omniresult\Common\Parsers\AbstractParser;
+use Sportic\Omniresult\Common\Scrapers\Traits\HasRequestTrait;
 use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
 use Sportic\Omniresult\Common\Utility\ParametersTrait;
 use Goutte\Client;
-use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class AbstractScraper
@@ -15,12 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 abstract class AbstractScraper
 {
-    use ParametersTrait, HasCallValidationTrait;
-
-    /**
-     * @var Crawler
-     */
-    protected $crawler = null;
+    use ParametersTrait, HasCallValidationTrait, HasRequestTrait;
 
     /**
      * @var Client
@@ -36,34 +31,26 @@ abstract class AbstractScraper
             return false;
         }
 
-        $crawler = $this->getCrawler();
         $parser = $this->getNewParser();
-        $parser->setCrawler($crawler);
+
+        $data = $this->generateParserData();
+        $parser->initialize($data);
 
         return $parser;
     }
 
     /**
-     * @return Crawler
+     * @return array
      */
-    public function getCrawler()
+    protected function generateParserData()
     {
-        if (!$this->crawler) {
-            $this->initCrawler();
-        }
+        $crawler = $this->getRequest();
+        $data = [
+            'crawler' => $crawler
+        ];
 
-        return $this->crawler;
+        return $data;
     }
-
-    protected function initCrawler()
-    {
-        $this->crawler = $this->generateCrawler();
-    }
-
-    /**
-     * @return Crawler
-     */
-    abstract protected function generateCrawler();
 
     /**
      * @return Client

@@ -6,9 +6,10 @@ use Sportic\Omniresult\Common\Content\AbstractContent;
 use Sportic\Omniresult\Common\Content\ContentFactory;
 use Sportic\Omniresult\Common\Content\GenericContent;
 use Sportic\Omniresult\Common\Models\AbstractModel;
+use Sportic\Omniresult\Common\Parsers\Traits\HasCrawlerTrait;
+use Sportic\Omniresult\Common\Parsers\Traits\HasDataTrait;
 use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
 use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
-use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class AbstractParser
@@ -17,16 +18,13 @@ use Symfony\Component\DomCrawler\Crawler;
 abstract class AbstractParser
 {
     use HasCallValidationTrait;
+    use HasDataTrait;
+    use HasCrawlerTrait;
 
     /**
      * @var AbstractScraper
      */
     protected $scraper;
-
-    /**
-     * @var Crawler
-     */
-    protected $crawler;
 
     /**
      * @var null|AbstractContent
@@ -73,21 +71,6 @@ abstract class AbstractParser
         $this->scraper = $scraper;
     }
 
-    /**
-     * @return Crawler
-     */
-    public function getCrawler(): Crawler
-    {
-        return $this->crawler;
-    }
-
-    /**
-     * @param Crawler $crawler
-     */
-    public function setCrawler(Crawler $crawler)
-    {
-        $this->crawler = $crawler;
-    }
 
     /**
      * @return array
