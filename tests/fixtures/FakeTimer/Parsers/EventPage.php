@@ -10,7 +10,6 @@ use Sportic\Omniresult\Common\Parsers\AbstractParser;
  */
 class EventPage extends AbstractParser
 {
-
     protected function generateContent()
     {
         // TODO: Implement generateContent() method.
