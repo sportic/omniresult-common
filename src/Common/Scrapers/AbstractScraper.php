@@ -4,6 +4,7 @@ namespace Sportic\Omniresult\Common\Scrapers;
 
 use ByTIC\GouttePhantomJs\Clients\ClientFactory;
 use Sportic\Omniresult\Common\Parsers\AbstractParser;
+use Sportic\Omniresult\Common\Scrapers\Traits\GenerateParserDataTrait;
 use Sportic\Omniresult\Common\Scrapers\Traits\HasRequestTrait;
 use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
 use Sportic\Omniresult\Common\Utility\ParametersTrait;
@@ -15,7 +16,8 @@ use Goutte\Client;
  */
 abstract class AbstractScraper
 {
-    use ParametersTrait, HasCallValidationTrait, HasRequestTrait;
+    use ParametersTrait, HasCallValidationTrait;
+    use HasRequestTrait, GenerateParserDataTrait;
 
     /**
      * @var Client
@@ -33,27 +35,10 @@ abstract class AbstractScraper
 
         $parser = $this->getNewParser();
 
-        $data = $this->generateParserData();
+        $data = $this->getParserData();
         $parser->initialize($data);
 
         return $parser;
-    }
-
-    /**
-     * @return array
-     */
-    protected function generateParserData()
-    {
-        $request = $this->getRequest();
-
-        $data = [
-            'scrapper' => $this,
-            'request' => $request,
-            'crawler' => $this->getRequest(),
-            'response' => $this->getClient()->getResponse(),
-        ];
-
-        return $data;
     }
 
     /**
