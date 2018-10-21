@@ -12,7 +12,6 @@ use Sportic\Omniresult\Common\Tests\Fixtures\FakeTimer\Scrapers\EventPage;
  */
 class AbstractScrapersTest extends AbstractTest
 {
-
     public function testGetNewParser()
     {
         $scraper = new EventPage();

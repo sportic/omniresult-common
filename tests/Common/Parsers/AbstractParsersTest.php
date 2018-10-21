@@ -12,7 +12,6 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class AbstractParsersTest extends AbstractTest
 {
-
     public function testInitCrawlerFromData()
     {
         $crawler = new Crawler();
