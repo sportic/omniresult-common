@@ -8,6 +8,7 @@ use Sportic\Omniresult\Common\Content\GenericContent;
 use Sportic\Omniresult\Common\Models\AbstractModel;
 use Sportic\Omniresult\Common\Parsers\Traits\HasCrawlerTrait;
 use Sportic\Omniresult\Common\Parsers\Traits\HasDataTrait;
+use Sportic\Omniresult\Common\Parsers\Traits\HasResponseTrait;
 use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
 use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
 
@@ -20,6 +21,7 @@ abstract class AbstractParser
     use HasCallValidationTrait;
     use HasDataTrait;
     use HasCrawlerTrait;
+    use HasResponseTrait;
 
     /**
      * @var AbstractScraper
@@ -85,7 +87,7 @@ abstract class AbstractParser
      */
     public function getModel()
     {
-        $model      = $this->getNewModel();
+        $model = $this->getNewModel();
         $parameters = $this->getContent();
         $model->setParameters($parameters);
 
@@ -98,7 +100,7 @@ abstract class AbstractParser
     public function getNewModel()
     {
         $className = $this->getModelClassName();
-        $model     = new $className();
+        $model = new $className();
 
         return $model;
     }

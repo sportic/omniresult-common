@@ -16,14 +16,16 @@ trait HasRequestTrait
     protected $request = null;
 
     /**
+     * @var Crawler
+     */
+    protected $crawler = null;
+
+    /**
      * @return Crawler
      */
     public function getRequest()
     {
-        if (!$this->request) {
-            $this->initRequest();
-        }
-
+        $this->checkInitRequest();
         return $this->request;
     }
 
@@ -31,23 +33,39 @@ trait HasRequestTrait
     {
         if (method_exists($this, 'generateRequest')) {
             $this->request = $this->generateRequest();
+            $this->crawler = false;
         } else {
-            $this->request = $this->generateCrawler();
+            $this->crawler = $this->generateCrawler();
+            $this->request = $this->getClient()->getRequest();
+        }
+    }
+
+    protected function checkInitRequest()
+    {
+        if ($this->request === null) {
+            $this->initRequest();
         }
     }
 
     /**
-     * @deprecated For the future use generateRequest
-     * @return Crawler
-     */
-    abstract protected function generateCrawler();
-
-    /**
-     * @deprecated use getRequest
      * @return Crawler
      */
     public function getCrawler()
     {
-        return $this->getRequest();
+        $this->checkInitRequest();
+        return $this->crawler;
     }
+
+    /**
+     * @return bool
+     */
+    protected function hasCrawler()
+    {
+        return $this->crawler instanceof Crawler;
+    }
+
+    /**
+     * @return Crawler
+     */
+    abstract protected function generateCrawler();
 }

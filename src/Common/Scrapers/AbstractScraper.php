@@ -44,9 +44,12 @@ abstract class AbstractScraper
      */
     protected function generateParserData()
     {
-        $crawler = $this->getRequest();
+        $request = $this->getRequest();
+
         $data = [
-            'crawler' => $crawler
+            'request' => $request,
+            'crawler' => $this->getRequest(),
+            'response' => $this->getClient()->getResponse(),
         ];
 
         return $data;
