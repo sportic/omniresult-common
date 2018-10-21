@@ -21,7 +21,7 @@ trait HasResponseTrait
     /**
      * @param Response $response
      */
-    public function setCrawler(Response $response)
+    public function setResponse(Response $response)
     {
         $this->setParameter('response', $response);
     }

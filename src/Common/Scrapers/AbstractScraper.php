@@ -47,6 +47,7 @@ abstract class AbstractScraper
         $request = $this->getRequest();
 
         $data = [
+            'scrapper' => $this,
             'request' => $request,
             'crawler' => $this->getRequest(),
             'response' => $this->getClient()->getResponse(),
@@ -92,12 +93,11 @@ abstract class AbstractScraper
     /**
      * @return AbstractParser
      */
-    protected function getNewParser()
+    public function getNewParser()
     {
         $class = $this->getParserName();
         /** @var AbstractParser $parser */
         $parser = new $class();
-        $parser->setScraper($this);
 
         return $parser;
     }
