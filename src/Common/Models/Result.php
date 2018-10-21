@@ -16,8 +16,11 @@ class Result extends AbstractModel
 
     protected $bib;
     protected $fullName;
+    protected $firstName;
+    protected $lastName;
 
     protected $time;
+    protected $timeGross;
 
     protected $category;
     protected $gender;
@@ -142,6 +145,38 @@ class Result extends AbstractModel
     /**
      * @return mixed
      */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getTime()
     {
         return $this->time;
@@ -154,6 +189,22 @@ class Result extends AbstractModel
     {
         $time = str_replace(',', '.', $time);
         $this->time = $time;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeGross()
+    {
+        return $this->timeGross;
+    }
+
+    /**
+     * @param mixed $timeGross
+     */
+    public function setTimeGross($timeGross): void
+    {
+        $this->timeGross = $timeGross;
     }
 
     /**
