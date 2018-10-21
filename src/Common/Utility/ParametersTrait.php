@@ -43,6 +43,16 @@ trait ParametersTrait
     }
 
     /**
+     * @param $name
+     * @return bool
+     */
+    public function hasParameter($name)
+    {
+        $this->checkInitParameters();
+        return $this->parameters->has($name);
+    }
+
+    /**
      * Get all parameters.
      *
      * @return array An associative array of parameters.
