@@ -9,6 +9,7 @@ use Sportic\Omniresult\Common\Models\AbstractModel;
 use Sportic\Omniresult\Common\Parsers\Traits\HasCrawlerTrait;
 use Sportic\Omniresult\Common\Parsers\Traits\HasDataTrait;
 use Sportic\Omniresult\Common\Parsers\Traits\HasResponseTrait;
+use Sportic\Omniresult\Common\Parsers\Traits\HasScraperTrait;
 use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
 use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
 
@@ -22,11 +23,7 @@ abstract class AbstractParser
     use HasDataTrait;
     use HasCrawlerTrait;
     use HasResponseTrait;
-
-    /**
-     * @var AbstractScraper
-     */
-    protected $scraper;
+    use HasScraperTrait;
 
     /**
      * @var null|AbstractContent
@@ -56,22 +53,6 @@ abstract class AbstractParser
     }
 
     abstract protected function generateContent();
-
-    /**
-     * @return AbstractScraper
-     */
-    public function getScraper()
-    {
-        return $this->scraper;
-    }
-
-    /**
-     * @param AbstractScraper $scraper
-     */
-    public function setScraper($scraper)
-    {
-        $this->scraper = $scraper;
-    }
 
 
     /**
