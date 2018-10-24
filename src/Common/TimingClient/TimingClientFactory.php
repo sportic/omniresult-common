@@ -48,6 +48,7 @@ class TimingClientFactory
     public static function getSupportedClients()
     {
         return [
+            'Endu',
             'RaceTec',
             'Trackmyrace'
         ];
