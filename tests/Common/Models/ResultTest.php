@@ -38,4 +38,32 @@ class ResultTest extends AbstractTest
             $result->toArray()
         );
     }
+
+
+    /**
+     * @dataProvider statusFromPositionData
+     * @param $position
+     * @param $status
+     */
+    public function testStatusFromPosition($positionValue, $status)
+    {
+        foreach (['posGen', 'posCategory', 'posGender'] as $position) {
+            $params = [$position => $positionValue];
+            $result = new Result($params);
+            self::assertSame($status, $result->getStatus());
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function statusFromPositionData()
+    {
+        return [
+            ['dsq', 'disqualified'],
+            ['DSQ', 'disqualified'],
+            ['dns', 'dns'],
+            ['DNS', 'dns'],
+        ];
+    }
 }

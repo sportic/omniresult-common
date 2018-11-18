@@ -75,7 +75,7 @@ class Result extends AbstractModel
      */
     public function setPosGen($posGen): void
     {
-        $this->posGen = $posGen;
+        $this->setPosition('posGen', $posGen);
     }
 
     /**
@@ -91,7 +91,7 @@ class Result extends AbstractModel
      */
     public function setPosCategory($posCategory): void
     {
-        $this->posCategory = $posCategory;
+        $this->setPosition('posCategory', $posCategory);
     }
 
     /**
@@ -107,7 +107,42 @@ class Result extends AbstractModel
      */
     public function setPosGender($posGender): void
     {
-        $this->posGender = $posGender;
+        $this->setPosition('posGender', $posGender);
+    }
+
+    /**
+     * @param $type
+     * @param $value
+     */
+    protected function setPosition($type, $value)
+    {
+        $status = $this->parseStatusFromPosition($value);
+        if ($status !== null) {
+            $this->setStatus($status);
+        } else {
+            $this->{$type} = $value;
+        }
+    }
+
+    /**
+     * @param $value
+     * @return string|null
+     */
+    protected function parseStatusFromPosition($value)
+    {
+        $value = strtolower($value);
+        switch ($value) {
+            case 'dns':
+            case 'dnf':
+            case 'hd':
+            case 'ooc':
+                return $value;
+            case 'dsq':
+            case 'dq':
+                return 'disqualified';
+                break;
+        }
+        return null;
     }
 
     /**
