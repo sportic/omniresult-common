@@ -24,8 +24,8 @@ trait HasDetectorTrait
         if (!$this->hasDetector()) {
             throw new RuntimeException(
                 "Client {$this->getName()} does not support detect. 
-                Client has no detector class {$this->getDetectorClassName()}
-                ");
+                Client has no detector class {$this->getDetectorClassName()}"
+            );
         }
         $detectorClass = $this->getDetectorClassName();
         return call_user_func($detectorClass . '::detect', $url);
