@@ -7,6 +7,9 @@ use Sportic\Omniresult\Common\Scrapers\AbstractScraper;
 /**
  * Trait HasScraperTrait
  * @package Sportic\Omniresult\Common\Parsers\Traits
+ *
+ * @method getParameter($key, $default = null)
+ * @method setParameter($key, $value)
  */
 trait HasScraperTrait
 {

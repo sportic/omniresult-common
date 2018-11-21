@@ -7,6 +7,9 @@ use Symfony\Component\DomCrawler\Crawler;
 /**
  * Trait HasCrawlerTrait
  * @package Sportic\Omniresult\Common\Parsers\Traits
+ *
+ * @method getParameter($key, $default = null)
+ * @method setParameter($key, $value)
  */
 trait HasCrawlerTrait
 {

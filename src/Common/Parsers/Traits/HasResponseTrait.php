@@ -7,6 +7,9 @@ use Symfony\Component\BrowserKit\Response;
 /**
  * Trait HasResponseTrait
  * @package Sportic\Omniresult\Common\Parsers\Traits
+ *
+ * @method getParameter($key, $default = null)
+ * @method setParameter($key, $value)
  */
 trait HasResponseTrait
 {
