@@ -21,12 +21,25 @@ trait GenerateParserDataTrait
         $request = $this->getRequest();
 
         $data = [
-            'scrapper' => $this,
+            'scraper' => $this,
             'request' => $request,
             'crawler' => $this->getCrawler(),
-            'response' => $this->getClient()->getResponse(),
         ];
+        $this->populateParserDataResponse($data);
 
         return $data;
+    }
+
+    /**
+     * @param $data
+     * @return void
+     */
+    protected function populateParserDataResponse(&$data)
+    {
+        /** @noinspection PhpUndefinedMethodInspection */
+        $response = $this->getClient()->getResponse();
+        if ($response instanceof \Symfony\Component\BrowserKit\Response) {
+            $data['response'] = $response;
+        }
     }
 }

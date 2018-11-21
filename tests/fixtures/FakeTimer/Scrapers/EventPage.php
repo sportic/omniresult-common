@@ -17,6 +17,6 @@ class EventPage extends AbstractScraper
      */
     protected function generateCrawler()
     {
-        // TODO: Implement generateCrawler() method.
+        return new Crawler();
     }
 }
