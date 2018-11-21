@@ -3,9 +3,10 @@
 namespace Sportic\Omniresult\Common\Content;
 
 use ArrayAccess;
-use Sportic\Omniresult\Common\Utility\Traits\ArrayMethodsTrait;
-use Sportic\Omniresult\Common\Utility\Traits\ArrayAccessTrait;
 use Sportic\Omniresult\Common\Helper;
+use Sportic\Omniresult\Common\Utility\ParametersTrait;
+use Sportic\Omniresult\Common\Utility\Traits\ArrayAccessTrait;
+use Sportic\Omniresult\Common\Utility\Traits\ArrayMethodsTrait;
 
 /**
  * Class AbstractContent
@@ -14,6 +15,7 @@ use Sportic\Omniresult\Common\Helper;
 abstract class AbstractContent implements ArrayAccess
 {
     use ArrayAccessTrait, ArrayMethodsTrait;
+    use ParametersTrait;
 
     /**
      * AbstractContent constructor.
@@ -28,25 +30,6 @@ abstract class AbstractContent implements ArrayAccess
 
     protected function initialize()
     {
-    }
-
-    /**
-     * @param array $parameters
-     */
-    public function setParameters($parameters)
-    {
-        if (is_array($parameters)) {
-            foreach ($parameters as $name => $value) {
-                $method = 'set' . ucfirst(Helper::camelCase($name));
-                if (method_exists($this, $method)) {
-                    $this->$method($value);
-                } elseif (property_exists($this, $name)) {
-                    $this->{$name} = $value;
-                } else {
-                    $this->setParameter($name, $value);
-                }
-            }
-        }
     }
 
     /**

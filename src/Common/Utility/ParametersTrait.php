@@ -73,6 +73,15 @@ trait ParametersTrait
      */
     public function initialize(array $parameters = [])
     {
+        $this->setParameters($parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return $this
+     */
+    public function setParameters(array $parameters = [])
+    {
         $this->checkInitParameters();
 
         if (is_array($parameters)) {

@@ -140,7 +140,6 @@ class Result extends AbstractModel
             case 'dsq':
             case 'dq':
                 return 'disqualified';
-                break;
         }
         return null;
     }
