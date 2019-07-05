@@ -45,11 +45,19 @@ abstract class AbstractParser
     protected function initContents()
     {
         if ($this->isValidCall()) {
-            $contents = $this->generateContent();
-            $this->contents = ContentFactory::createFromArray($contents, $this->getContentClassName());
+            $this->contents = $this->generateContentObject();
         } else {
             $this->contents = false;
         }
+    }
+
+    /**
+     * @return AbstractContent
+     */
+    protected function generateContentObject()
+    {
+        $contents = $this->generateContent();
+        return ContentFactory::createFromArray($contents, $this->getContentClassName());
     }
 
     abstract protected function generateContent();
