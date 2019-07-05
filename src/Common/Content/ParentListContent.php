@@ -3,15 +3,16 @@
 namespace Sportic\Omniresult\Common\Content;
 
 /**
- * Class ListContent
+ * Class ParentListContent
  * @package Sportic\Omniresult\Common\Content
  */
-class ListContent extends AbstractContent
+class ParentListContent extends AbstractContent
 {
     protected function initialize()
     {
         parent::initialize();
 
+        $this->set('record', false);
         $this->set('records', []);
         $this->set('pagination', [
             'current' => 1,
@@ -19,6 +20,14 @@ class ListContent extends AbstractContent
             'items' => 0,
             'nextUrl' => '',
         ]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecord()
+    {
+        return $this->get('record');
     }
 
     /**
