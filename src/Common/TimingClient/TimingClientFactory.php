@@ -49,6 +49,7 @@ class TimingClientFactory
     {
         return [
             'Endu',
+            'RaceResults',
             'RaceTec',
             'Trackmyrace'
         ];
