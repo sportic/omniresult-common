@@ -29,6 +29,7 @@ class Result extends AbstractModel
     protected $club;
 
     protected $status;
+    protected $notes;
 
     protected $href;
 
@@ -365,5 +366,21 @@ class Result extends AbstractModel
     public function setClub($club): void
     {
         $this->club = $club;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * @param mixed $notes
+     */
+    public function setNotes($notes): void
+    {
+        $this->notes = $notes;
     }
 }
