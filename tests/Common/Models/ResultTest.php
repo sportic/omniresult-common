@@ -31,6 +31,7 @@ class ResultTest extends AbstractTest
                 'country' => null,
                 'club' => null,
                 'status' => null,
+                'notes' => null,
                 'href' => null,
                 'splits' => [],
                 'parameters' => null,
