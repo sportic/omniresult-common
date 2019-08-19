@@ -34,6 +34,9 @@ trait HasDetectorTrait
     public function detectFromSource($crawler)
     {
         $detectorClass = $this->checkDetectorClass('Source');
+        if (is_callable([$detectorClass, 'detect'])) {
+            return call_user_func($detectorClass . '::detect', $crawler);
+        }
         return call_user_func($detectorClass . '::detectFromSource', $crawler);
     }
 
@@ -42,7 +45,10 @@ trait HasDetectorTrait
      */
     public function supportsDetectFromSource()
     {
-        $detectorClass = $this->checkDetectorClass('Source');
+        if (!$this->hasDetector('Source')) {
+            return false;
+        }
+        $detectorClass = $this->getDetectorClassName('Source');
         if (get_parent_class($detectorClass) == AbstractSourceDetector::class) {
             return is_callable([$detectorClass, 'detect']);
         }

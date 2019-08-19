@@ -2,6 +2,7 @@
 
 namespace Sportic\Omniresult\Common\RequestDetector\Detectors;
 
+use ByTIC\GouttePhantomJs\Clients\ClientFactory;
 use Sportic\Omniresult\Common\RequestDetector\DetectorResult;
 use \Symfony\Component\DomCrawler\Crawler;
 
@@ -33,6 +34,18 @@ class AbstractSourceDetector extends AbstractDetector
     {
         $detector = new static($crawler);
         return $detector->investigate();
+    }
+
+    /**
+     * @return \Symfony\Component\DomCrawler\Crawler
+     */
+    public static function generateCrawler($url)
+    {
+        $client = ClientFactory::getGoutteClient();
+        return $client->request(
+            'GET',
+            $url
+        );
     }
 
     /**
