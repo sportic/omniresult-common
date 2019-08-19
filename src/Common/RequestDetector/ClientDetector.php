@@ -2,6 +2,7 @@
 
 namespace Sportic\Omniresult\Common\RequestDetector;
 
+use ByTIC\GouttePhantomJs\Clients\ClientFactory;
 use Sportic\Omniresult\Common\TimingClient\TimingClientCollection;
 use Sportic\Omniresult\Common\TimingClientInterface;
 
@@ -58,6 +59,37 @@ class ClientDetector
                 }
             }
         }
+        return $this->detectClientFromSource();
+    }
+
+    /**
+     * @return DetectorResult
+     */
+    protected function detectClientFromSource()
+    {
+        foreach ($this->clients as $client) {
+            if ($client->supportsDetectFromSource()) {
+                $crawler = isset($crawler) ? $crawler : $this->getSource();
+                /** @var TimingClientInterface|HasDetectorTrait $client */
+                $result = $client->detectFromSource($crawler);
+                if ($result->isValid()) {
+                    $result->setClient($client);
+                    return $result;
+                }
+            }
+        }
         return new DetectorResult();
+    }
+
+    /**
+     * @return \Symfony\Component\DomCrawler\Crawler
+     */
+    protected function getSource()
+    {
+        $client = ClientFactory::getGoutteClient();
+        return $client->request(
+            'GET',
+            $this->get($this->url)
+        );
     }
 }

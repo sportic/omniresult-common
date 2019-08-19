@@ -10,7 +10,6 @@ use Sportic\Omniresult\Common\RequestDetector\AbstractRequestDetector;
  */
 class RequestDetector extends AbstractRequestDetector
 {
-
     /**
      * @inheritdoc
      */
