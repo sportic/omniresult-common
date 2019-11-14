@@ -28,4 +28,20 @@ class ListContent extends AbstractContent
     {
         return $this->get('records');
     }
+
+    /**
+     * @param array $pagination
+     */
+    public function setPagination($pagination)
+    {
+        $this->set('pagination', array_merge($this->get('pagination'), $pagination));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPagination()
+    {
+        return $this->get('pagination');
+    }
 }
