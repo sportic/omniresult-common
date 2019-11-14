@@ -51,7 +51,8 @@ class TimingClientFactory
             'Endu',
             'RaceResults',
             'RaceTec',
-            'Trackmyrace'
+            'Trackmyrace',
+            'LiniaDeSosire'
         ];
     }
 }
