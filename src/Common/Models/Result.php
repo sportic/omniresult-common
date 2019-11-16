@@ -15,6 +15,7 @@ class Result extends AbstractModel
     protected $posGender;
 
     protected $bib;
+
     protected $fullName;
     protected $firstName;
     protected $lastName;
@@ -175,6 +176,25 @@ class Result extends AbstractModel
     public function setFullName($fullName): void
     {
         $this->fullName = $fullName;
+        $this->parseNamesFromFull($fullName);
+    }
+
+    /**
+     * @param string $fullName
+     */
+    protected function parseNamesFromFull($fullName)
+    {
+        if (strpos($fullName, ',')) {
+            $names = explode(',', $fullName);
+        } else {
+            $names = explode(' ', $fullName);
+        }
+
+        $lastName = array_pop($names);
+        $firstName = implode(' ', $names);
+
+        $this->firstName = trim($firstName);
+        $this->lastName = trim($lastName);
     }
 
     /**

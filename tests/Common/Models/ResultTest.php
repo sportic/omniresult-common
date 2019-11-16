@@ -11,6 +11,34 @@ use Sportic\Omniresult\Common\Tests\AbstractTest;
  */
 class ResultTest extends AbstractTest
 {
+
+    /**
+     * @dataProvider dataParseNamesFromFull
+     * @param $fullName
+     * @param $firstName
+     * @param $lastName
+     */
+    public function testParseNamesFromFull($fullName, $firstName, $lastName)
+    {
+        $result = new Result();
+        $result->setFullName($fullName);
+
+        self::assertSame($firstName, $result->getFirstName());
+        self::assertSame($lastName, $result->getLastName());
+    }
+
+    /**
+     * @return array
+     */
+    public function dataParseNamesFromFull()
+    {
+        return [
+            ['John Doe', 'John', 'Doe'],
+            ['John Mike Doe', 'John Mike', 'Doe'],
+            ['John, Mike Doe', 'John', 'Mike Doe'],
+        ];
+    }
+
     public function testToArrayWithEmptyResult()
     {
         $result = new Result();
@@ -43,7 +71,7 @@ class ResultTest extends AbstractTest
 
     /**
      * @dataProvider statusFromPositionData
-     * @param $position
+     * @param $positionValue
      * @param $status
      */
     public function testStatusFromPosition($positionValue, $status)
