@@ -39,6 +39,34 @@ class ResultTest extends AbstractTest
         ];
     }
 
+    /**
+     * @dataProvider dataParseFullName
+     * @param $fullName
+     * @param $firstName
+     * @param $lastName
+     */
+    public function testParseFullName($fullName, $firstName, $lastName)
+    {
+        $result = new Result();
+        $result->setFirstName($firstName);
+        $result->setLastName($lastName);
+
+        self::assertSame($fullName, $result->getFullName());
+    }
+
+    /**
+     * @return array
+     */
+    public function dataParseFullName()
+    {
+        return [
+            ['John', 'John', ''],
+            ['John Doe', 'John', 'Doe'],
+            ['John Mike Doe', 'John Mike', 'Doe'],
+            ['John Mike Doe', 'John', 'Mike Doe'],
+        ];
+    }
+
     public function testToArrayWithEmptyResult()
     {
         $result = new Result();

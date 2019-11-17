@@ -211,6 +211,7 @@ class Result extends AbstractModel
     public function setFirstName($firstName): void
     {
         $this->firstName = $firstName;
+        $this->parseFullName();
     }
 
     /**
@@ -227,6 +228,12 @@ class Result extends AbstractModel
     public function setLastName($lastName): void
     {
         $this->lastName = $lastName;
+        $this->parseFullName();
+    }
+
+    protected function parseFullName()
+    {
+        $this->fullName = trim($this->firstName . ' ' . $this->lastName);
     }
 
     /**
