@@ -180,9 +180,27 @@ class Result extends AbstractModel
     }
 
     /**
+     * @param mixed $fullName
+     */
+    public function setFullNameFL($fullName): void
+    {
+        $this->fullName = $fullName;
+        $this->parseNamesFromFull($fullName, 'fl');
+    }
+
+    /**
+     * @param mixed $fullName
+     */
+    public function setFullNameLF($fullName): void
+    {
+        $this->fullName = $fullName;
+        $this->parseNamesFromFull($fullName, 'lf');
+    }
+
+    /**
      * @param string $fullName
      */
-    protected function parseNamesFromFull($fullName)
+    protected function parseNamesFromFull($fullName, $type = 'fl')
     {
         if (strpos($fullName, ',')) {
             $names = explode(',', $fullName);
@@ -190,7 +208,7 @@ class Result extends AbstractModel
             $names = explode(' ', $fullName);
         }
 
-        $lastName = array_pop($names);
+        $lastName = $type == 'lf' ? array_shift($names) : array_pop($names);
         $firstName = implode(' ', $names);
 
         $this->firstName = trim($firstName);

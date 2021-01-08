@@ -12,13 +12,21 @@ use Sportic\Omniresult\Common\Tests\AbstractTest;
 class ResultTest extends AbstractTest
 {
 
+    public function test_parseNamesFromFullFL()
+    {
+        $result = new Result(['fullNameFL' => 'Mihai Vasile']);
+
+        self::assertSame('Mihai', $result->getFirstName());
+        self::assertSame('Vasile', $result->getLastName());
+    }
+
     /**
-     * @dataProvider dataParseNamesFromFull
+     * @dataProvider data_parseNamesFromFull
      * @param $fullName
      * @param $firstName
      * @param $lastName
      */
-    public function testParseNamesFromFull($fullName, $firstName, $lastName)
+    public function test_parseNamesFromFull($fullName, $firstName, $lastName)
     {
         $result = new Result();
         $result->setFullName($fullName);
@@ -30,7 +38,7 @@ class ResultTest extends AbstractTest
     /**
      * @return array
      */
-    public function dataParseNamesFromFull()
+    public function data_parseNamesFromFull()
     {
         return [
             ['John Doe', 'John', 'Doe'],
@@ -40,12 +48,12 @@ class ResultTest extends AbstractTest
     }
 
     /**
-     * @dataProvider dataParseFullName
+     * @dataProvider data_parseFullName
      * @param $fullName
      * @param $firstName
      * @param $lastName
      */
-    public function testParseFullName($fullName, $firstName, $lastName)
+    public function test_parseFullName($fullName, $firstName, $lastName)
     {
         $result = new Result();
         $result->setFirstName($firstName);
@@ -57,7 +65,7 @@ class ResultTest extends AbstractTest
     /**
      * @return array
      */
-    public function dataParseFullName()
+    public function data_parseFullName()
     {
         return [
             ['John', 'John', ''],

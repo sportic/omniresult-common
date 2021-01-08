@@ -19,9 +19,12 @@ class AbstractScrapersTest extends AbstractTest
         self::assertInstanceOf(ParserPage::class, $scraper->getNewParser());
     }
 
-    public function testExecuteReturnsParser()
+    public function test_executeReturnsParser()
     {
-        $scraper = new ScraperPage();
+        $scraper = \Mockery::mock(ScraperPage::class)->shouldAllowMockingProtectedMethods()->makePartial();
+        $scraper->shouldReceive('getParserName')->andReturn(ParserPage::class);
+        $scraper->shouldReceive('getParserData')->andReturn([]);
+
         $parser = $scraper->execute();
 
         self::assertInstanceOf(ParserPage::class, $parser);
