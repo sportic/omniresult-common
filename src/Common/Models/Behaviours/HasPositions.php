@@ -65,6 +65,6 @@ trait HasPositions
      */
     protected function setPosition($type, $value)
     {
-        $this->{$type} = $value;
+        $this->{$type} = intval($value);
     }
 }

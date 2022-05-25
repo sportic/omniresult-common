@@ -10,7 +10,9 @@ class Result extends AbstractModel
 {
     use Behaviours\HasTime;
     use Behaviours\HasResult;
-    use Behaviours\HasPositions;
+    use Behaviours\HasPositions {
+        setPosition as setPositionTrait;
+    }
 
     protected $id;
 
@@ -71,9 +73,9 @@ class Result extends AbstractModel
         $status = $this->parseStatusFromPosition($value);
         if ($status !== null) {
             $this->setStatus($status);
-        } else {
-            $this->{$type} = $value;
+            return;
         }
+        $this->setPositionTrait($type, $value);
     }
 
     /**
