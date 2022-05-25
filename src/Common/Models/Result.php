@@ -8,20 +8,17 @@ namespace Sportic\Omniresult\Common\Models;
  */
 class Result extends AbstractModel
 {
-    protected $id;
+    use Behaviours\HasTime;
+    use Behaviours\HasResult;
+    use Behaviours\HasPositions;
 
-    protected $posGen;
-    protected $posCategory;
-    protected $posGender;
+    protected $id;
 
     protected $bib;
 
     protected $fullName;
     protected $firstName;
     protected $lastName;
-
-    protected $time;
-    protected $timeGross;
 
     protected $category;
     protected $gender;
@@ -64,53 +61,6 @@ class Result extends AbstractModel
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPosGen()
-    {
-        return $this->posGen;
-    }
-
-    /**
-     * @param mixed $posGen
-     */
-    public function setPosGen($posGen): void
-    {
-        $this->setPosition('posGen', $posGen);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPosCategory()
-    {
-        return $this->posCategory;
-    }
-
-    /**
-     * @param mixed $posCategory
-     */
-    public function setPosCategory($posCategory): void
-    {
-        $this->setPosition('posCategory', $posCategory);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPosGender()
-    {
-        return $this->posGender;
-    }
-
-    /**
-     * @param mixed $posGender
-     */
-    public function setPosGender($posGender): void
-    {
-        $this->setPosition('posGender', $posGender);
-    }
 
     /**
      * @param $type
@@ -252,39 +202,6 @@ class Result extends AbstractModel
     protected function parseFullName()
     {
         $this->fullName = trim($this->firstName . ' ' . $this->lastName);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
-
-    /**
-     * @param mixed $time
-     */
-    public function setTime($time): void
-    {
-        $time = str_replace(',', '.', $time);
-        $this->time = $time;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTimeGross()
-    {
-        return $this->timeGross;
-    }
-
-    /**
-     * @param mixed $timeGross
-     */
-    public function setTimeGross($timeGross): void
-    {
-        $this->timeGross = $timeGross;
     }
 
     /**

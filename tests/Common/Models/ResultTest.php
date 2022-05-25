@@ -81,15 +81,10 @@ class ResultTest extends AbstractTest
         self::assertSame(
             [
                 'id' => null,
-                'posGen' => null,
-                'posCategory' => null,
-                'posGender' => null,
                 'bib' => null,
                 'fullName' => null,
                 'firstName' => null,
                 'lastName' => null,
-                'time' => null,
-                'timeGross' => null,
                 'category' => null,
                 'gender' => null,
                 'country' => null,
@@ -99,6 +94,12 @@ class ResultTest extends AbstractTest
                 'href' => null,
                 'splits' => [],
                 'parameters' => null,
+                'time' => null,
+                'timeGross' => null,
+                'result' => null,
+                'posGen' => null,
+                'posCategory' => null,
+                'posGender' => null
             ],
             $result->toArray()
         );

@@ -2,21 +2,22 @@
 
 namespace Sportic\Omniresult\Common\Models;
 
+use Sportic\Omniresult\Common\Models\Behaviours\HasTime;
+
 /**
  * Class Split
  * @package Sportic\Omniresult\Common\Models
  */
 class Split extends AbstractModel
 {
+    use Behaviours\HasTime;
+    use Behaviours\HasResult;
+    use Behaviours\HasPositions;
+
     protected $name;
 
-    protected $time;
     protected $timeFromStart;
     protected $timeOfDay;
-
-    protected $posGen;
-    protected $posCategory;
-    protected $posGender;
 
     /**
      * @return mixed
@@ -24,14 +25,6 @@ class Split extends AbstractModel
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTime()
-    {
-        return $this->time;
     }
 
     /**
@@ -48,29 +41,5 @@ class Split extends AbstractModel
     public function getTimeOfDay()
     {
         return $this->timeOfDay;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPosGen()
-    {
-        return $this->posGen;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPosCategory()
-    {
-        return $this->posCategory;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPosGender()
-    {
-        return $this->posGender;
     }
 }

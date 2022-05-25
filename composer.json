@@ -1,41 +1,41 @@
 {
-  "name": "sportic/omniresult-common",
-  "description": "a common client scraper for getting data from timing websites",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Gabriel Solomon",
-      "email": "hello@gabrielsolomon.ro"
-    }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Sportic\\Omniresult\\": "src/",
-      "Sportic\\Omniresult\\Common\\Tests\\": "tests/Helpers"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Sportic\\Omniresult\\Common\\Tests\\": "tests/",
-      "Sportic\\Omniresult\\Common\\Tests\\Fixtures\\": "tests/fixtures"
-    }
-  },
-  "require": {
-    "php": "^7.2|^8.0",
-    "symfony/http-foundation": "^3|^4|^5",
-    "bytic/goutte-phantomjs-bridge": "^1.0"
-  },
-  "require-dev": {
-    "squizlabs/php_codesniffer": "^3.0",
-    "phpunit/phpunit": "^6.2",
-    "mockery/mockery": "^1.0"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
+    "name": "sportic/omniresult-common",
+    "description": "a common client scraper for getting data from timing websites",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Solomon",
+            "email": "hello@gabrielsolomon.ro"
+        }
     ],
-    "post-update-cmd": [
-      "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
-    ]
-  }
+    "autoload": {
+        "psr-4": {
+            "Sportic\\Omniresult\\": "src/",
+            "Sportic\\Omniresult\\Common\\Tests\\": "tests/Helpers"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sportic\\Omniresult\\Common\\Tests\\": "tests/",
+            "Sportic\\Omniresult\\Common\\Tests\\Fixtures\\": "tests/fixtures"
+        }
+    },
+    "require": {
+        "php": "^7.2|^8.0",
+        "symfony/http-foundation": "^3|^4|^5|^6.0",
+        "bytic/goutte-phantomjs-bridge": "^1.0"
+    },
+    "require-dev": {
+        "bytic/phpqatools": "^1.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
+        ],
+        "post-update-cmd": [
+            "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
+        ]
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }
