@@ -43,7 +43,7 @@ trait HasDetectorTrait
     /**
      * @return bool
      */
-    public function supportsDetectFromSource()
+    public function supportsDetectFromSource(): bool
     {
         if (!$this->hasDetector('Source')) {
             return false;
@@ -63,7 +63,7 @@ trait HasDetectorTrait
     {
         if (!$this->hasDetector($type)) {
             throw new RuntimeException(
-                "Client {$this->getName()} does not support detect. 
+                "Client {$this->getName()} does not support detect.
                 Client has no detector class {$this->getDetectorClassName($type)}"
             );
         }

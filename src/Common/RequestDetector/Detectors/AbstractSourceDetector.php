@@ -10,7 +10,7 @@ use \Symfony\Component\DomCrawler\Crawler;
  * Class AbstractSourceDetector
  * @package Sportic\Omniresult\Common\RequestDetector\Detectors
  */
-class AbstractSourceDetector extends AbstractDetector
+abstract class AbstractSourceDetector extends AbstractDetector
 {
     /**
      * @var Crawler
@@ -46,13 +46,5 @@ class AbstractSourceDetector extends AbstractDetector
             'GET',
             $url
         );
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function doInvestigation()
-    {
-        parent::doInvestigation();
     }
 }
