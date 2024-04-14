@@ -2,13 +2,13 @@
 
 namespace Sportic\Omniresult\Common\Scrapers;
 
-use ByTIC\GouttePhantomJs\Clients\ClientFactory;
 use Sportic\Omniresult\Common\Parsers\AbstractParser;
 use Sportic\Omniresult\Common\Scrapers\Traits\GenerateParserDataTrait;
 use Sportic\Omniresult\Common\Scrapers\Traits\HasRequestTrait;
 use Sportic\Omniresult\Common\Utility\HasCallValidationTrait;
 use Sportic\Omniresult\Common\Utility\ParametersTrait;
-use Goutte\Client;
+use Symfony\Component\BrowserKit\HttpBrowser;
+use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * Class AbstractScraper
@@ -20,7 +20,7 @@ abstract class AbstractScraper
     use HasRequestTrait, GenerateParserDataTrait;
 
     /**
-     * @var Client
+     * @var HttpBrowser
      */
     protected $client = null;
 
@@ -42,7 +42,7 @@ abstract class AbstractScraper
     }
 
     /**
-     * @return Client
+     * @return HttpBrowser
      */
     public function getClient()
     {
@@ -60,19 +60,20 @@ abstract class AbstractScraper
     }
 
     /**
-     * @param Client $client
+     * @param HttpBrowser $client
      */
     public function setClient($client)
     {
         $this->client = $client;
     }
-
     /**
-     * @return Client
+     * @return HttpBrowser
      */
     protected function generateClient()
     {
-        return ClientFactory::getPhantomJsClient();
+        $httpClient = HttpClient::create(['verify_peer' => false, 'verify_host' => false]);
+        $browser = new HttpBrowser($httpClient, null, null);
+        return $browser;
     }
 
     /**
