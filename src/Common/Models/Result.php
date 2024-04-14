@@ -12,12 +12,14 @@ class Result extends AbstractModel
     use Behaviours\HasCountry;
     use Behaviours\HasDob;
     use Behaviours\HasGender;
+    use Behaviours\HasHref;
     use Behaviours\HasNames;
     use Behaviours\HasTime;
     use Behaviours\HasResult;
     use Behaviours\HasPositions {
         setPosition as setPositionTrait;
     }
+    use Behaviours\HasRaceCategory;
 
     protected $bib;
 
@@ -26,7 +28,6 @@ class Result extends AbstractModel
     protected $status;
     protected $notes;
 
-    protected $href;
 
     /**
      * @var SplitCollection
@@ -95,14 +96,6 @@ class Result extends AbstractModel
     /**
      * @return mixed
      */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getStatus()
     {
         return $this->status;
@@ -114,22 +107,6 @@ class Result extends AbstractModel
     public function setStatus($status): void
     {
         $this->status = $status;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHref()
-    {
-        return $this->href;
-    }
-
-    /**
-     * @param mixed $href
-     */
-    public function setHref($href): void
-    {
-        $this->href = $href;
     }
 
     /**
@@ -193,6 +170,6 @@ class Result extends AbstractModel
         $this->setGender($athlete->getGender());
         $this->setDob($athlete->getDob());
         $this->setCountry($athlete->getCountry());
-        $this->getCategory($athlete->getCategory());
+        $this->setCategory($athlete->getCategory());
     }
 }

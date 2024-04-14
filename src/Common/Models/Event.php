@@ -11,6 +11,7 @@ use DateTime;
 class Event extends AbstractModel
 {
     use Behaviours\HasId;
+    use Behaviours\HasHref;
 
     /**
      * @var string

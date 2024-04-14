@@ -8,18 +8,15 @@ namespace Sportic\Omniresult\Common\Models;
  */
 class Race extends AbstractModel
 {
-
     use Behaviours\HasId;
+    use Behaviours\HasHref;
 
     /**
      * @var string
      */
     protected $name;
 
-    /**
-     * @var string
-     */
-    protected $href;
+
 
     /**
      * @return string
@@ -37,19 +34,4 @@ class Race extends AbstractModel
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
-    public function getHref(): string
-    {
-        return $this->href;
-    }
-
-    /**
-     * @param string $href
-     */
-    public function setHref(string $href)
-    {
-        $this->href = $href;
-    }
 }
