@@ -10,11 +10,7 @@ use DateTime;
  */
 class Event extends AbstractModel
 {
-
-    /**
-     * @var string
-     */
-    protected $id;
+    use Behaviours\HasId;
 
     /**
      * @var string
@@ -30,22 +26,6 @@ class Event extends AbstractModel
      * @var DateTime
      */
     protected $date;
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
 
 
     /**
