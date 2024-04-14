@@ -8,23 +8,18 @@ namespace Sportic\Omniresult\Common\Models;
  */
 class Result extends AbstractModel
 {
+    use Behaviours\HasId;
+    use Behaviours\HasCountry;
+    use Behaviours\HasDob;
+    use Behaviours\HasGender;
+    use Behaviours\HasNames;
     use Behaviours\HasTime;
     use Behaviours\HasResult;
     use Behaviours\HasPositions {
         setPosition as setPositionTrait;
     }
 
-    protected $id;
-
     protected $bib;
-
-    protected $fullName;
-    protected $firstName;
-    protected $lastName;
-
-    protected $category;
-    protected $gender;
-    protected $country;
 
     protected $club;
 
@@ -46,23 +41,6 @@ class Result extends AbstractModel
         $this->splits = new SplitCollection();
         parent::__construct($parameters);
     }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
 
     /**
      * @param $type
@@ -117,133 +95,9 @@ class Result extends AbstractModel
     /**
      * @return mixed
      */
-    public function getFullName()
-    {
-        return $this->fullName;
-    }
-
-    /**
-     * @param mixed $fullName
-     */
-    public function setFullName($fullName): void
-    {
-        $this->fullName = $fullName;
-        $this->parseNamesFromFull($fullName);
-    }
-
-    /**
-     * @param mixed $fullName
-     */
-    public function setFullNameFL($fullName): void
-    {
-        $this->fullName = $fullName;
-        $this->parseNamesFromFull($fullName, 'fl');
-    }
-
-    /**
-     * @param mixed $fullName
-     */
-    public function setFullNameLF($fullName): void
-    {
-        $this->fullName = $fullName;
-        $this->parseNamesFromFull($fullName, 'lf');
-    }
-
-    /**
-     * @param string $fullName
-     */
-    protected function parseNamesFromFull($fullName, $type = 'fl')
-    {
-        if (strpos($fullName, ',')) {
-            $names = explode(',', $fullName);
-        } else {
-            $names = explode(' ', $fullName);
-        }
-
-        $lastName = $type == 'lf' ? array_shift($names) : array_pop($names);
-        $firstName = implode(' ', $names);
-
-        $this->firstName = trim($firstName);
-        $this->lastName = trim($lastName);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param mixed $firstName
-     */
-    public function setFirstName($firstName): void
-    {
-        $this->firstName = $firstName;
-        $this->parseFullName();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param mixed $lastName
-     */
-    public function setLastName($lastName): void
-    {
-        $this->lastName = $lastName;
-        $this->parseFullName();
-    }
-
-    protected function parseFullName()
-    {
-        $this->fullName = trim($this->firstName . ' ' . $this->lastName);
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCategory()
     {
         return $this->category;
-    }
-
-    /**
-     * @param mixed $category
-     */
-    public function setCategory($category): void
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param mixed $gender
-     */
-    public function setGender($gender): void
-    {
-        $gender = strtolower($gender);
-        switch ($gender) {
-            case 'm':
-            case 'male':
-                $this->gender = 'male';
-                break;
-            default:
-                $this->gender = $gender;
-        }
     }
 
     /**
@@ -303,22 +157,6 @@ class Result extends AbstractModel
     /**
      * @return mixed
      */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param mixed $country
-     */
-    public function setCountry($country): void
-    {
-        $this->country = $country;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getClub()
     {
         return $this->club;
@@ -346,5 +184,15 @@ class Result extends AbstractModel
     public function setNotes($notes): void
     {
         $this->notes = $notes;
+    }
+
+    public function populateFromAthlete(Athlete $athlete)
+    {
+        $this->setFirstName($athlete->getFirstName());
+        $this->setLastName($athlete->getLastName());
+        $this->setGender($athlete->getGender());
+        $this->setDob($athlete->getDob());
+        $this->setCountry($athlete->getCountry());
+        $this->getCategory($athlete->getCategory());
     }
 }

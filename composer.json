@@ -21,9 +21,8 @@
         }
     },
     "require": {
-        "php": "^7.2|^8.0",
-        "symfony/http-foundation": "^3|^4|^5|^6.0",
-        "bytic/goutte-phantomjs-bridge": "^1.0"
+        "php": "^8.0",
+        "symfony/http-foundation": "^3|^4|^5|^6|^7"
     },
     "require-dev": {
         "bytic/phpqatools": "^1.0"
@@ -37,5 +36,13 @@
         ]
     },
     "prefer-stable": true,
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "ergebnis/composer-normalize": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "bytic/phpqatools": true
+        }
+    }
 }

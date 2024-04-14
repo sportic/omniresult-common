@@ -13,7 +13,7 @@ class RaceCategory extends AbstractModel
     /**
      * @var string
      */
-    protected $name;
+    protected ?string $name = null;
 
     /**
      * @return string
