@@ -163,8 +163,11 @@ class Result extends AbstractModel
         $this->notes = $notes;
     }
 
-    public function populateFromAthlete(Athlete $athlete)
+    public function populateFromAthlete(?Athlete $athlete)
     {
+        if ($athlete === null) {
+            return;
+        }
         $this->setFirstName($athlete->getFirstName());
         $this->setLastName($athlete->getLastName());
         $this->setGender($athlete->getGender());
