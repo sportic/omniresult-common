@@ -30,12 +30,6 @@
         "bytic/phpqatools": "^1.0"
     },
     "scripts": {
-        "post-install-cmd": [
-            "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
-        ],
-        "post-update-cmd": [
-            "ByTIC\\GouttePhantomJs\\Composer\\PhantomInstaller::installPhantomJS"
-        ]
     },
     "prefer-stable": true,
     "minimum-stability": "dev",

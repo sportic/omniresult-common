@@ -2,9 +2,10 @@
 
 namespace Sportic\Omniresult\Common\RequestDetector\Detectors;
 
-use ByTIC\GouttePhantomJs\Clients\ClientFactory;
 use Sportic\Omniresult\Common\RequestDetector\DetectorResult;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use \Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * Class AbstractSourceDetector
@@ -41,8 +42,10 @@ abstract class AbstractSourceDetector extends AbstractDetector
      */
     public static function generateCrawler($url)
     {
-        $client = ClientFactory::getGoutteClient();
-        return $client->request(
+        $httpClient = HttpClient::create(['verify_peer' => false, 'verify_host' => false]);
+        $browser = new HttpBrowser($httpClient, null, null);
+
+        return $browser->request(
             'GET',
             $url
         );
