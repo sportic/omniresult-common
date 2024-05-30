@@ -10,6 +10,7 @@ use Sportic\Omniresult\Common\Models\Behaviours\HasTime;
  */
 class Split extends AbstractModel
 {
+    use Behaviours\HasId;
     use Behaviours\HasTime;
     use Behaviours\HasResult;
     use Behaviours\HasPositions;
