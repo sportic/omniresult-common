@@ -16,11 +16,12 @@ class EventTest extends AbstractTest
         $object = new Event();
         self::assertSame(
             [
-                'id' => null,
+                'parameters' => null,
                 'name' => null,
                 'city' => null,
                 'date' => null,
-                'parameters' => null,
+                'id' => null,
+                'href' => null,
             ],
             $object->toArray()
         );

@@ -3,20 +3,21 @@
 
 namespace Sportic\Omniresult\Common\Models\Behaviours;
 
+use Sportic\Omniresult\Common\Dto\Gender;
+
 /**
  *
  */
 trait HasGender
 {
 
-    protected $gender;
+    protected ?Gender $gender = null;
 
     /**
-     * @return mixed
      */
-    public function getGender()
+    public function getGender(): ?string
     {
-        return $this->gender;
+        return $this->gender?->value;
     }
 
     /**
@@ -28,10 +29,15 @@ trait HasGender
         switch ($gender) {
             case 'm':
             case 'male':
-                $this->gender = 'male';
+                $this->gender = Gender::MALE;
+                break;
+            case 'f':
+            case 'female':
+            case 'w':
+                $this->gender = Gender::FEMALE;
                 break;
             default:
-                $this->gender = $gender;
+                $this->gender = null;
         }
     }
 }

@@ -80,26 +80,28 @@ class ResultTest extends AbstractTest
         $result = new Result();
         self::assertSame(
             [
-                'id' => null,
+                'parameters' => null,
                 'bib' => null,
-                'fullName' => null,
-                'firstName' => null,
-                'lastName' => null,
-                'category' => null,
-                'gender' => null,
-                'country' => null,
                 'club' => null,
                 'status' => null,
                 'notes' => null,
-                'href' => null,
                 'splits' => [],
-                'parameters' => null,
+                'id' => null,
+                'country' => null,
+                'dob' => null,
+                'yob' => null,
+                'gender' => null,
+                'href' => null,
+                'fullName' => null,
+                'firstName' => null,
+                'lastName' => null,
                 'time' => null,
                 'timeGross' => null,
                 'result' => null,
                 'posGen' => null,
                 'posCategory' => null,
-                'posGender' => null
+                'posGender' => null,
+                'category' => null,
             ],
             $result->toArray()
         );
