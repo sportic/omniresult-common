@@ -25,6 +25,10 @@ trait HasGender
      */
     public function setGender($gender): void
     {
+        if ($gender === null) {
+            $this->gender = null;
+            return;
+        }
         $gender = strtolower($gender);
         switch ($gender) {
             case 'm':

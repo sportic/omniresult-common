@@ -2,8 +2,10 @@
 
 namespace Sportic\Omniresult\Common\Models;
 
+use Enum;
 use Sportic\Omniresult\Common\Helper;
 use Sportic\Omniresult\Common\Utility\ParametersTrait;
+use UnitEnum;
 
 /**
  * Class AbstractModel
@@ -66,9 +68,27 @@ abstract class AbstractModel
         $properties = get_object_vars($this);
         $return = [];
         foreach ($properties as $name => $value) {
-            $value = is_object($value) ? Helper::objectToArray($value) : $value;
+            $value = $this->encodeParam($name, $value);
             $return[$name] = $value;
         }
         return $return;
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     * @return array|mixed|string
+     */
+    protected function encodeParam($name, $value)
+    {
+        if ($value instanceof UnitEnum) {
+            return $value->value;
+        }
+
+        if (is_object($value)) {
+            return Helper::objectToArray($value);
+        }
+
+        return $value;
     }
 }
